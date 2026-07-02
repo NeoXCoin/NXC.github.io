@@ -260,26 +260,10 @@
       transform: scale(1.1);
     }
     
-    /* 最底部的 About | FAQ | Token Info 鏈接：改回乾淨的白色 */
-    .footer-links { 
-      font-size: 13px; 
-      color: rgba(255, 255, 255, 0.4); /* 分隔線顏色 */
-      margin-bottom: 15px; 
-      text-align: center; 
-    }
-    .footer-links a { 
-      margin: 0 8px; 
-      text-decoration: none; 
-      color: #ffffff; /* 改返做白色，唔再係紫色 */
-      display: inline-block; 
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-    .footer-links a:hover { 
-      opacity: 1; 
-      text-decoration: underline;
-    }
-    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; }
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
     @media (max-width: 900px) {
       header { padding: 0 20px; }
