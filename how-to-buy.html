@@ -285,7 +285,30 @@
             background: rgba(163, 112, 255, 0.05);
             box-shadow: 0 0 10px rgba(163, 112, 255, 0.1);
         }
-        
+        .back-home-container {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .btn-back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.01);
+            transition: all 0.2s ease;
+        }
+        .btn-back-home:hover {
+            color: var(--text-main);
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.04);
+            transform: translateX(-2px);
+        }
         footer {
             width: 100%;
             border-top: 1px solid var(--border);
@@ -445,6 +468,8 @@
                 <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-width: 380px; margin-top: 15px;">
             </div>
         </div>
+        
+    </div>
 
     <footer>
         <div class="social-icons">
