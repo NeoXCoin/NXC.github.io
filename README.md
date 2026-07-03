@@ -13,13 +13,13 @@ https://github.com/neoxcoin/neoxcoin.github.io/releases
 
 
 ## Overview
-NeoX Coin (NXC) is a utility-driven token built on Base Mainnet designed to power...
+NXC (NeoX Coin) is a utility-driven token built on Base Mainnet designed to power...
 
 ---
 
 ## 📖 Overview
 
-The **NeoX Website** is built entirely with pure HTML, CSS, and JavaScript.  
+The **NXC Website** is built entirely with pure HTML, CSS, and JavaScript.  
 It supports both **English** and **Traditional Chinese**, and includes a **Global (Google Translate)** version.  
 The site introduces the NeoX ecosystem — including its vision, token, NFTs, games, and metaverse projects.
 
