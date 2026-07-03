@@ -158,7 +158,7 @@
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
         
-        /* 外層容器：保持 16:9 比例，遮蔽底部藍條 */
+        /* 外層容器：保持 16:9 比例 */
         .iframe-container {
             width: 100%;
             max-width: 900px;
@@ -172,7 +172,7 @@
             aspect-ratio: 16 / 9;
         }
         
-        /* 內層 <iframe>：拉高高度將藍條擠出可視範圍 */
+        /* 內層 <iframe>：將藍條擠出可視範圍 */
         .iframe-container iframe {
             width: 100%;
             height: calc(100% + 42px);
@@ -284,21 +284,6 @@
             color: #fff;
         }
         
-        /* Market Links */
-        .market-link {
-            margin-top: 15px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-        
-        .market-link a {
-            margin: 0 5px;
-        }
-        
-        .market-link a:hover {
-            color: var(--primary);
-        }
-        
         /* --- 5. Footer --- */
         footer {
             width: 100%;
@@ -310,6 +295,19 @@
         
         .social-icons {
             margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 0; /* 依靠 img 自身的 margin 控制間距 */
+        }
+        
+        /* 核心修正：將 .social-icons 內部的 a 標籤預設樣式還原，不繼承按鈕特效 */
+        .social-icons a {
+            display: inline-block;
+            width: auto;
+            height: auto;
+            padding: 0;
+            background: transparent;
+            border: none;
         }
         
         .social-icons img {
@@ -364,7 +362,6 @@
                 gap: 8px !important;
             }
             
-            /* 手機版隱藏 Global 選單以騰出空間，只保留 EN | 繁 */
             .language-switch a[href*="global"], 
             .language-switch span:last-of-type {
                 display: none !important;
@@ -375,7 +372,6 @@
                 gap: 3px !important;
             }
             
-            /* 將 Fullscreen 🚀 字眼縮短成 Live 🚀 確保排版不下墜 */
             header button[onclick*="window.open"] {
                 font-size: 0 !important;
                 padding: 6px 10px !important;
@@ -386,7 +382,6 @@
                 font-size: 11px !important;
             }
             
-            /* 縮小連接錢包按鈕 */
             .btn-connect {
                 font-size: 11px !important;
                 padding: 6px 10px !important;
@@ -403,11 +398,6 @@
             
             .nav-links {
                 display: none;
-            }
-            
-            .ecosystem-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
             }
         }
     </style>
@@ -437,7 +427,7 @@
 
     <!-- 1. Sticky Header -->
     <header>
-        <a href="index-zh.html"><img class="nav-logo" src="XNXC.png" alt="NeoX Logo"></a>
+        <a href="index.html"><img class="nav-logo" src="XNXC.png" alt="NeoX Logo"></a>
         <div class="header-right">
             <div class="language-switch">
                 <a href="metaverse.html">EN</a>
@@ -468,7 +458,7 @@
     <div class="container">
         <!-- 2. Animated Aurora Tagline -->
         <h1 class="tagline">NeoX 元宇宙展覽</h1>
-        <p class="subtagline">沉浸式畫廊、藝術與動態視覺</p>
+        <p class="subtagline">沉浸式虛擬畫廊、藝術與動態體驗</p>
 
         <!-- 🌐 Live Interactive OnCyber Frame -->
         <div class="iframe-container" style="aspect-ratio: 16 / 9; height: auto;">
@@ -479,7 +469,7 @@
         <!-- Buttons -->
         <div class="btn-row">
             <button class="btn btn-primary" onclick="openModal();">🎟️ 購買門票</button>
-            <a class="btn btn-secondary" href="index-zh.html">← 返回首頁</a>
+            <a class="btn btn-secondary" href="index.html">← 返回首頁</a>
         </div>
 
         <!-- Notice -->
