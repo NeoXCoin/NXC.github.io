@@ -1,6 +1,6 @@
 [English](README.md) | [繁體中文](README-zh.md)
 
-# 🌐 NXC (NoeX Coin) Official Website
+# 🌐 NXC (NeoX Coin) Official Website
 
 Welcome to the official website repository for **NXC (NeoXcoin)** —  
 a decentralized, creative, and community-driven Web3 ecosystem  
