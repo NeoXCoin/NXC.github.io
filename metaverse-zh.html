@@ -280,82 +280,91 @@
       header {
         padding: 0 10px !important;
         gap: 8px !important;
-    }
-    .header-right {
+      }
+      .header-right {
         gap: 8px !important;
-    }
-    .language-switch a[href*="global"], .language-switch span:last-of-type {
+      }
+      .language-switch a[href*="global"], .language-switch span:last-of-type {
         display: none !important;
-    }
-    .language-switch {
+      }
+      .language-switch {
         font-size: 11px !important;
         gap: 3px !important;
-    }
+      }
       header button[onclick*="window.open"] {
         font-size: 0 !important;
         padding: 6px 10px !important;
-    }
+      }
       header button[onclick*="window.open"]::after {
         content: "直播 🚀";
         font-size: 11px !important;
-    }
-    .btn-connect {
+      }
+      .btn-connect {
         font-size: 11px !important;
         padding: 6px 10px !important;
         white-space: nowrap !important;
-    }
-    .container {
+      }
+      .container {
         padding-top: 85px;
-    }
-    .tagline {
+      }
+      .tagline {
         font-size: 36px;
+      }
     }
-
-    /* Market Links */
-    .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
-    .market-link a { margin: 0 5px; }
-    .market-link a:hover { color: var(--primary); }
 
     /* --- 5. Footer --- */
     footer {
-        width: 100%;
-        border-top: 1px solid var(--border);
-        padding: 40px 0;
-        margin-top: 50px;
-        background: rgba(0,0,0,0.1);
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.1);
     }
 
     .social-icons {
-        margin-bottom: 25px; /* 確保推開下面啲字 */
+      margin-bottom: 25px;
     }
 
     .social-icons img {
-        width: 18px;          /* 縮細返 Icon 嘅心 */
-        height: 18px;
-        margin: 0 15px;       
-        padding: 4px;         /* 圓框內邊距，令圓圈大細啱啱好 */
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 50%;   
-        filter: grayscale(100%) brightness(0.7);
-        opacity: 0.9;
-        transition: all 0.2s ease;
-        box-sizing: content-box; /* 確保 padding 唔會將個圈縮細 */
-    }  
-
-    /* Hover 效果保持 */
-    .social-icons img:hover {
-        filter: grayscale(0%) brightness(1);
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.4);
-        transform: scale(1.1);
+      width: 18px;
+      height: 18px;
+      margin: 0 15px;
+      padding: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      filter: grayscale(100%) brightness(0.7);
+      opacity: 0.9;
+      transition: all 0.2s ease;
+      box-sizing: content-box;
     }
-    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-    .footer-links a { margin: 0 8px; }
-    .footer-links a:hover { color: var(--text-main); }
-    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
-    
+
+    .social-icons img:hover {
+      filter: grayscale(0%) brightness(1);
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
+    }
+
+    .footer-links {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      margin: 0 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    .copyright {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
   </style>
 
   <!-- 🎥 Video SEO structured data -->
@@ -383,7 +392,9 @@
 
   <!-- 1. Sticky Header -->
   <header>
-    <a href="index-zh.html"><img class="nav-logo" src="XNXC.png" alt="NeoX Logo"></a>
+    <a href="index-zh.html">
+      <img class="nav-logo" src="https://neoxcoin.io/XNXC.png" alt="NeoX Logo">
+    </a>
     <div class="header-right">
       <div class="language-switch">
         <a href="metaverse.html">EN</a>
@@ -436,10 +447,11 @@
         <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="icon-instagram-new.PNG" alt="Instagram" /></a>
         <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="icon-tiktok-new.PNG" alt="TikTok" /></a>
         <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="icon-youtube-new.PNG" alt="YouTube" /></a>
+      </div>
       <div class="footer-links">
         <a href="about-zh.html">關於我們</a> | <a href="faq-zh.html">常見問題</a> | <a href="token-info-zh.html">代幣資料</a> | <a href="neox-wiki-zh.html">維基百科</a> | <a href="disclaimer-zh.html">免責聲明</a>
       </div>
-      <div class="copyright">© 2026 NXC. 版權所有。</div>
+      <div class="copyright">© 2025 NeoX. 版權所有。</div>
     </footer>
   </div>
 
