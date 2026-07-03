@@ -1,6 +1,6 @@
 [English](README.md) | [繁體中文](README-zh.md)
 
-# 🌐 NeoX Official Website
+# 🌐 NXC Official Website
 
 Welcome to the official website repository for **NeoX (NXC)** —  
 a decentralized, creative, and community-driven Web3 ecosystem  
