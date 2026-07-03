@@ -2,7 +2,7 @@
 
 # 🌐 NXC Official Website
 
-Welcome to the official website repository for **NeoX (NXC)** —  
+Welcome to the official website repository for **NXC (NeoXcoin)** —  
 a decentralized, creative, and community-driven Web3 ecosystem  
 that blends **art, gaming, and blockchain** to shape the future of digital experiences.
 
@@ -53,7 +53,7 @@ to open it directly in your browser (recommended: **Chrome** or **Safari**).
 
 ## 🔮 Future Plans
 
-- 💰 NeoX **Tokenomics** and project roadmap  
+- 💰 NXC **Tokenomics** and project roadmap  
 - ⛓️ On-chain data and live price charts  
 - 🕹️ Wallet connection and in-browser token purchases  
 - 🚀 SEO, performance, and visual improvements  
@@ -74,4 +74,4 @@ For collaborations, partnerships, or media inquiries, feel free to reach us on I
 
 ---
 
-© 2025 **NeoX Project** — All rights reserved.
+© 2026 **NXC Project** — All rights reserved.
