@@ -1,6 +1,6 @@
 [English](README.md) | [繁體中文](README-zh.md)
 
-# 🌐 NXC Official Website
+# 🌐 NXC (NoeX Coin) Official Website
 
 Welcome to the official website repository for **NXC (NeoXcoin)** —  
 a decentralized, creative, and community-driven Web3 ecosystem  
@@ -47,7 +47,7 @@ to open it directly in your browser (recommended: **Chrome** or **Safari**).
 1. Go to your GitHub repository → **Settings → Pages**  
 2. Set: **Branch = `main`**, Folder = **`/(root)`**  
 3. Save and wait a few moments — your website will be live at:  
-   🔗 [https://neoxcoin.github.io](https://neoxcoin.github.io)
+   🔗 [https://neoxcoin.io](https://neoxcoin.io)
 
 ---
 
@@ -62,7 +62,7 @@ to open it directly in your browser (recommended: **Chrome** or **Safari**).
 
 ## 📜 Disclaimer
 
-Before using this website, please review [`disclaimer.html`](https://neoxcoin.github.io/disclaimer.html).  
+Before using this website, please review [`disclaimer.html`](https://neoxcoin.io/disclaimer.html).  
 Cryptocurrency investments carry significant risks — always **Do Your Own Research (DYOR)**.
 
 ---
