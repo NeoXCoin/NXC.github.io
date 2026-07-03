@@ -69,7 +69,7 @@
 <body>
 
     <header>
-        <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png"></a>
+        <a href="index-global.html"><img class="nav-logo" src="XNXC.png" alt="NeoX Logo"></a>
         <div class="header-right">
             <div id="google_translate_element"></div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
@@ -78,7 +78,7 @@
 
     <div class="container">
         <div class="title-box">
-            <img src="https://neoxcoin.github.io/XNXC.png" class="title-logo">
+            <img src="XNXC.png" class="title-logo">
             <h1>Add NXC Token</h1>
         </div>
         
@@ -113,7 +113,7 @@
             try {
                 await window.ethereum.request({ 
                     method: 'wallet_watchAsset', 
-                    params: { type: 'ERC20', options: { address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', symbol: 'NXC', decimals: 18, image: 'https://neoxcoin.github.io/XNXC.png' } } 
+                    params: { type: 'ERC20', options: { address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', symbol: 'NXC', decimals: 18, image: 'https://neoxcoin.io/XNXC.png' } } 
                 });
             } catch(e) { alert("Please open in MetaMask browser"); }
         }
