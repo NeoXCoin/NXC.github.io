@@ -60,6 +60,8 @@
         .mrow { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
         .copy-btn { background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; margin-left: 10px; }
         .back-link { display: block; margin-top: 30px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+        .copyright {font-size: 12px;color: #888888; }
+        .copyright a, .copyright a:visited {font-size: 12px;color: #888888;text-decoration: none; /* 如果想好似依家咁樣條底線，可以加上呢行 */}
 
         @media (max-width: 600px) { header { padding: 0 15px; } }
     </style>
@@ -98,8 +100,8 @@
             <div class="mrow"><span>Symbol:</span> <span>NXC</span></div>
             <div class="mrow"><span>Decimals:</span> <span>18</span></div>
         </div>
-
-    </div>
+         <div class="copyright" style="margin-top: 20px;">© 2025 NXC. All rights reserved.| <a href="disclaimer-global.html">Disclaimer</a>
+       </div>
 
     <script>
         document.getElementById('connect-btn').addEventListener('click', async () => {
