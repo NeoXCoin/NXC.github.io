@@ -1,568 +1,369 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="en">
 <head>
-    <!-- Favicon (ICO + SVG + Apple Icon) -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NeoX 元宇宙展覽</title>
-    <meta name="description" content="步入 NeoX 元宇宙展覽 — 一個融合 NFT、藝術與沉浸式 3D 體驗的動態虛擬畫廊。探索來自 NeoX 宇宙的未來感視覺與數位創意。" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <!-- Fonts Connect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-dark: #03010a; /* 宇宙深空黑 */
-            --text-main: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.7);
-            --primary: #a370ff; /* 皇家紫 */
-            --secondary: #00ffcc; /* 電馭叛客青 */
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --font-stack: 'Plus Jakarta Sans', sans-serif;
-        }
-        
-        body {
-            margin: 0;
-            background: radial-gradient(circle at center, #110526 0%, var(--bg-dark) 100%);
-            background-image: radial-gradient(circle at center, #110526 0%, var(--bg-dark) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-            font-family: var(--font-stack);
-            color: var(--text-main);
-            text-align: center;
-            -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.01em;
-            overflow-x: hidden;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
-        
-        /* --- 1. Sticky Header --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 50px;
-            background: rgba(7, 2, 20, 0.6);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-        
-        .nav-logo {
-            height: 32px;
-            opacity: 0.9;
-        }
-        
-        .nav-logo:hover {
-            opacity: 1;
-        }
-        
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        /* Language Switcher */
-        .language-switch {
-            font-size: 13px;
-            color: var(--text-muted);
-            display: flex;
-            gap: 6px;
-        }
-        
-        .language-switch a:hover {
-            color: var(--text-main);
-        }
-        
-        .lang-sep {
-            opacity: 0.3;
-        }
-        
-        /* Connect Wallet Button */
-        .btn-connect {
-            font-size: 13px;
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: 999px;
-            background: transparent;
-            color: var(--secondary);
-            border: 1px solid rgba(0, 255, 204, 0.3);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .btn-connect:hover {
-            background: rgba(0, 255, 204, 0.05);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
-        }
-        
-        /* --- Main Container --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 75px 20px 50px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        /* --- 2. Title Section & Animations --- */
-        @keyframes fadeInUpLoopSlow {
-            0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-            18% { opacity: 1; transform: translateY(0); filter: blur(0); }
-            86% { opacity: 1; transform: translateY(0); filter: blur(0); }
-            93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
-            100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-        }
-        
-        @keyframes textShimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .tagline {
-            font-size: 56px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
-        }
-        
-        .subtagline {
-            font-size: 18px;
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 40px;
-            max-width: 600px;
-            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
-        }
-        
-        /* 外層容器：保持 16:9 比例 */
-        .iframe-container {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto 30px;
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
-            aspect-ratio: 16 / 9;
-        }
-        
-        /* 內層 <iframe>：將藍條擠出可視範圍 */
-        .iframe-container iframe {
-            width: 100%;
-            height: calc(100% + 42px);
-            border: none;
-            display: block;
-        }
-        
-        video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* --- 4. Buttons --- */
-        .btn-row {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 14px 30px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            min-width: 190px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-sizing: border-box;
-        }
-        
-        .btn-primary {
-            background: #ffffff;
-            color: #000000;
-            border: none;
-        }
-        
-        .btn-primary:hover {
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--glass);
-            border-color: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-        
-        .notice {
-            margin-top: 15px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-        
-        /* --- Modal Style --- */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(3, 1, 10, 0.8);
-            backdrop-filter: blur(8px);
-        }
-        
-        .modal-content {
-            background: #070214;
-            margin: 15% auto;
-            padding: 30px;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            width: 80%;
-            max-width: 400px;
-            color: white;
-            box-shadow: 0 0 20px rgba(163, 112, 255, 0.2);
-            text-align: center;
-            position: relative;
-        }
-        
-        .modal-content h2 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: #aaa;
-            font-size: 28px;
-            cursor: pointer;
-        }
-        
-        .close:hover {
-            color: #fff;
-        }
-        
-        /* --- 5. Footer --- */
-        footer {
-            width: 100%;
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-            margin-top: 50px;
-            background: rgba(0,0,0,0.1);
-        }
-        
-        .social-icons {
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: center;
-            gap: 0; /* 依靠 img 自身的 margin 控制間距 */
-        }
-        
-        /* 核心修正：將 .social-icons 內部的 a 標籤預設樣式還原，不繼承按鈕特效 */
-        .social-icons a {
-            display: inline-block;
-            width: auto;
-            height: auto;
-            padding: 0;
-            background: transparent;
-            border: none;
-        }
-        
-        .social-icons img {
-            width: 18px;
-            height: 18px;
-            margin: 0 15px;
-            padding: 4px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            filter: grayscale(100%) brightness(0.7);
-            opacity: 0.9;
-            transition: all 0.2s ease;
-            box-sizing: content-box;
-        }
-        
-        .social-icons img:hover {
-            filter: grayscale(0%) brightness(1);
-            opacity: 1;
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: scale(1.1);
-        }
-        
-        .footer-links {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            margin: 0 8px;
-        }
-        
-        .footer-links a:hover {
-            color: var(--text-main);
-        }
-        
-        .copyright {
-            font-size: 12px;
-            color: rgba(255,255,255,0.4);
-        }
-        
-        /* --- Responsive Viewport Adaptation --- */
-        @media (max-width: 900px) {
-            header {
-                padding: 0 10px !important;
-                gap: 8px !important;
-            }
-            
-            .header-right {
-                gap: 8px !important;
-            }
-            
-            .language-switch a[href*="global"], 
-            .language-switch span:last-of-type {
-                display: none !important;
-            }
-            
-            .language-switch {
-                font-size: 11px !important;
-                gap: 3px !important;
-            }
-            
-            header button[onclick*="window.open"] {
-                font-size: 0 !important;
-                padding: 6px 10px !important;
-            }
-            
-            header button[onclick*="window.open"]::after {
-                content: "Live 🚀";
-                font-size: 11px !important;
-            }
-            
-            .btn-connect {
-                font-size: 11px !important;
-                padding: 6px 10px !important;
-                white-space: nowrap !important;
-            }
-            
-            .container {
-                padding-top: 85px;
-            }
-            
-            .tagline {
-                font-size: 36px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
-    
-    <!-- 🎥 Video SEO structured data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        "name": "NeoX 元宇宙展覽 – 動態視覺體驗",
-        "description": "一場展示 NeoX 元宇宙世界的 3D 演進視覺之旅。定期更新全新的數位環境與 NFT 藝術作品。",
-        "thumbnailUrl": "https://neoxcoin.io/XNXC.png",
-        "uploadDate": "2025-11-08",
-        "contentUrl": "https://neoxcoin.io/NeoXDynamicVisions%20.mp4",
-        "publisher": {
-            "@type": "Organization",
-            "name": "NeoX",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://neoxcoin.io/XNXC.png"
-            }
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>What is NeoX? – Empowering Web3 Freedom</title>
+  <meta name="description" content="Discover NeoX (NXC) – a decentralized Web3 utility token ecosystem built on Base network for gaming, NFTs, and metaverse expansion." />
+  <link rel="canonical" href="https://neoxcoin.github.io/what-is-neox.html" />
+  
+  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox.html" hreflang="en" />
+  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-zh.html" hreflang="zh-Hant" />
+  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-global.html" hreflang="x-default" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
     }
-    </script>
+
+    body {
+      margin: 0;
+      /* Unified Premium Starfield Background */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
+
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    
+    .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+    }
+
+    /* --- Main Container --- */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 140px 20px 80px 20px;
+    }
+
+    /* --- 2. Hero Section Animations --- */
+    @keyframes fadeInUpLoopSlow {
+      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      18% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      86% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
+      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+    }
+
+    @keyframes textShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: 
+        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+        textShimmer 4s linear infinite;
+    }
+
+    .page-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 60px auto;
+      line-height: 1.6;
+      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
+    }
+
+    /* --- 3. Info Cards Grid --- */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      text-align: left;
+      margin-bottom: 50px;
+    }
+
+    .info-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 40px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .info-card:hover {
+      border-color: rgba(163, 112, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 15px 0;
+      color: #ffffff;
+    }
+
+    .card-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .highlight-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--secondary);
+      background: rgba(0, 255, 204, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-top: 15px;
+    }
+
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
+        width: 18px;
+        height: 18px; 
+        margin: 0 15px;
+    
+        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
+        padding: 4px; 
+    
+        /* 圓框設定保持 */
+        background: rgba(255, 255, 255, 0.05); 
+        border: 1px solid rgba(255, 255, 255, 0.15); 
+        border-radius: 50%; 
+    
+        /* 之前你調校好的深灰色濾鏡 */
+        filter: grayscale(100%) brightness(0.7); 
+        opacity: 0.9; 
+    
+        transition: all 0.2s ease;
+        box-sizing: content-box; 
+    }
+
+    /* Hover 效果保持不變 */
+    .social-icons img:hover {
+        filter: grayscale(0%) brightness(1); 
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.15); 
+        border-color: rgba(255, 255, 255, 0.4); 
+        transform: scale(1.1);
+    }
+
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 950px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 38px; }
+      .grid-layout { grid-template-columns: 1fr; gap: 20px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- 1. Sticky Header -->
-    <header>
-        <a href="index.html"><img class="nav-logo" src="XNXC.png" alt="NeoX Logo"></a>
-        <div class="header-right">
-            <div class="language-switch">
-                <a href="metaverse.html">EN</a>
-                <span class="lang-sep">|</span>
-                <a href="metaverse-zh.html">繁</a>
-                <span class="lang-sep">|</span>
-                <a href="metaverse-global.html">Global</a>
-            </div>
-            
-            <!-- 全螢幕按鈕：點擊在新分頁開啟 OnCyber 展覽 -->
-            <button onclick="window.open('https://oncyber.io/neoxdynamic','_blank')" style="
-                font-size: 13px;
-                font-weight: 600;
-                padding: 8px 16px;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, 0.05);
-                color: #ffffff;
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                cursor: pointer;
-                transition: all 0.2s;
-            " onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.15)';">
-                全螢幕 🚀
-            </button>
-            <button class="btn-connect" id="connect-btn">連接錢包</button>
-        </div>
-    </header>
-
-    <div class="container">
-        <!-- 2. Animated Aurora Tagline -->
-        <h1 class="tagline">NeoX 元宇宙展覽</h1>
-        <p class="subtagline">沉浸式虛擬畫廊、藝術與動態體驗</p>
-
-        <!-- 🌐 Live Interactive OnCyber Frame -->
-        <div class="iframe-container" style="aspect-ratio: 16 / 9; height: auto;">
-            <iframe src="https://oncyber.io/neoxdynamic" width="100%" height="100%" style="border: none; display: block;" allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer;" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
-            </iframe>
-        </div>
-
-        <!-- Buttons -->
-        <div class="btn-row">
-            <button class="btn btn-primary" onclick="openModal();">🎟️ 購買門票</button>
-            <a class="btn btn-secondary" href="index.html">← 返回首頁</a>
-        </div>
-
-        <!-- Notice -->
-        <p class="notice">💡 目前展覽免費開放探索。未來特定活動將會引入門票機制。</p>
-
-        <footer>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="icon-facebook-new.PNG" alt="Facebook" /></a>
-                <a href="https://x.com/neox__official" target="_blank"><img src="icon-x-new.PNG" alt="X" /></a>
-                <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="icon-instagram-new.PNG" alt="Instagram" /></a>
-                <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="icon-tiktok-new.PNG" alt="TikTok" /></a>
-                <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="icon-youtube-new.PNG" alt="YouTube" /></a>
-            </div>
-            <div class="footer-links">
-                <a href="about.html">關於我們</a> | <a href="faq.html">常見問題</a> | <a href="token-info.html">代幣資訊</a> | <a href="neox-wiki.html">維基百科</a> | <a href="disclaimer-en.html">免責聲明</a>
-            </div>
-            <div class="copyright">© 2026 NXC. 保留所有權利。</div>
-        </footer>
+  <header>
+    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox.html">What is NeoX?</a>
+      <a href="how-to-buy.html">How to Buy?</a>
+      <a href="game.html">NeoX Game</a>
+      <a href="metaverse.html">Metaverse Exhibition</a>
+      <a href="nft-projects.html">NFT Projects</a>
     </div>
 
-    <!-- Modal -->
-    <div id="ticketModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>🎟️ 門票尚未開售</h2>
-            <p>請密切留意 NeoX 即將推出的限定特展活動！</p>
-        </div>
+    <div class="header-right">
+      <div class="language-switch">
+        <a href="what-is-neox.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="what-is-neox-zh.html">繁</a>
+        <span class="lang-sep">|</span>
+        <a href="what-is-neox-global.html">Global</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <h1 class="page-title">What is NeoX Coin?</h1>
+    <p class="page-subtitle">NeoX (NXC) is a cutting-edge, community-driven decentralized utility asset engineered on Base Mainnet, unlocking a borderless ecosystem for interactive gaming, immersive metaverse applications, and creative digital assets.</p>
+
+    <div class="grid-layout">
+      
+      <div class="info-card">
+        <span class="card-icon">🚀</span>
+        <h3 class="card-title">Next-Gen Base Utility</h3>
+        <p class="card-text">By building exclusively on Coinbase's L2 network (Base), NeoX ensures ultra-low transaction gas fees and near-instant processing times, offering users a seamless Web3 interaction model without typical scalability barriers.</p>
+        <span class="highlight-badge">Base Network Mainnet</span>
+      </div>
+
+      <div class="info-card">
+        <span class="card-icon">🎮</span>
+        <h3 class="card-title">Gaming Integration</h3>
+        <p class="card-text">NXC acts as the fundamental currency fueling on-chain and off-chain gaming protocols within the NeoX umbrella. Unlock achievements, buy premium Web3 gear, and participate in truly decentralized gameplay mechanics.</p>
+        <span class="highlight-badge">Play & Earn Protocol</span>
+      </div>
+
+      <div class="info-card">
+        <span class="card-icon">🔥</span>
+        <h3 class="card-title">Metaverse Hubs</h3>
+        <p class="card-text">Step into virtual landscapes, digital art exhibitions, and interactive community spaces. NeoX serves as the medium of value exchange for acquiring digital land plots, accessing exclusive virtual galleries, and custom avatars.</p>
+        <span class="highlight-badge">Immersive Environments</span>
+      </div>
+
+      <div class="info-card">
+        <span class="card-icon">💎</span>
+        <h3 class="card-title">100% Secure & Audited</h3>
+        <p class="card-text">Ecosystem transparency is our highest priority. The NXC smart contract is verified and integrated directly into trusted decentralized deployment platforms like Thirdweb, ensuring fair distribution and absolute safety for all token holders.</p>
+        <span class="highlight-badge">Verified Smart Contract</span>
+      </div>
+
     </div>
 
-    <!-- Scripts -->
-    <script>
-        function openModal() {
-            document.getElementById("ticketModal").style.display = "block";
-        }
-        function closeModal() {
-            document.getElementById("ticketModal").style.display = "none";
-        }
-        window.onclick = function(event) {
-            let modal = document.getElementById("ticketModal");
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+  </div>
 
-        // --- Connect Wallet Script ---
-        const connectBtn = document.getElementById('connect-btn');
-        async function checkConnection() {
-            if (typeof window.ethereum !== 'undefined') {
-                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                if (accounts.length > 0) {
-                    updateButton(accounts[0]);
-                }
-            }
-        }
-        
-        function updateButton(address) {
-            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-            connectBtn.innerText = shortAddress;
-            connectBtn.style.color = "#00ffcc";
-            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-        }
-        
-        connectBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    connectBtn.innerText = "連接中...";
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    updateButton(accounts[0]);
-                } catch (error) {
-                    console.error(error);
-                    connectBtn.innerText = "連接錢包";
-                }
-            } else {
-                alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
-                window.open('https://metamask.io/download/', '_blank');
-            }
-        });
-        window.addEventListener('DOMContentLoaded', checkConnection);
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+  </footer>
 
-        // 🔍 Detect IG / Threads browser
-        (function() {
-            const ua = navigator.userAgent || navigator.vendor || window.opera;
-            if (ua.includes("Instagram") || ua.includes("Threads")) {
-                const container = document.querySelector(".iframe-container");
-                container.innerHTML = `
-                    <div style="padding:40px 20px; background:#070214; border:1px solid var(--border); border-radius:16px; color:#fff;">
-                        <h2 style="color:var(--secondary); margin-top:0;">⚠️ 不支援此瀏覽器</h2>
-                        <p style="color:var(--text-muted);">Instagram / Threads 內建瀏覽器無法正常顯示此展覽。<br> 👉 請複製連結並使用 <b>Safari</b> 或 <b>Chrome</b> 開啟以獲得完整體驗。</p>
-                        <a href="https://neoxcoin.github.io/metaverse.html" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 24px; background:var(--secondary);color:#000;border-radius:8px;text-decoration:none;font-weight:600;">在瀏覽器開啟</a>
-                    </div>
-                `;
-            }
-        })();
-    </script>
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
+
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet login error:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+
 </body>
 </html>
