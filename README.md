@@ -6,7 +6,7 @@ Welcome to the official website repository for **NXC (NeoXcoin)** —
 a decentralized, creative, and community-driven Web3 ecosystem  
 that blends **art, gaming, and blockchain** to shape the future of digital experiences.
 
-🔗 **Live Site:** [https://neoxcoin.github.io](https://neoxcoin.github.io)
+🔗 **Live Site:** [https://neoxcoin.io](https://neoxcoin.io)
 
 📦 **Press Kit (Official Release):**  
 https://github.com/neoxcoin/neoxcoin.github.io/releases
