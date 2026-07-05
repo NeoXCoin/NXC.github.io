@@ -285,30 +285,55 @@
             background: rgba(163, 112, 255, 0.05);
             box-shadow: 0 0 10px rgba(163, 112, 255, 0.1);
         }
-        .back-home-container {
-            text-align: center;
-            margin-top: 50px;
-            margin-bottom: 20px;
+        /* Standardized Back Button */
+        .btn-row {
+          display: flex;
+          justify-content: center;
+          margin-top: 45px;
         }
-        .btn-back-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-muted);
-            padding: 10px 24px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.01);
-            transition: all 0.2s ease;
-        }
-        .btn-back-home:hover {
-            color: var(--text-main);
-            border-color: rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.04);
-            transform: translateX(-2px);
-        }
+        .btn-neo-home {
+                width: 44px !important;
+                height: 44px !important;
+                border-radius: 18px !important; /* 核心：極致圓滑四角肥皂質感 */
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                background: rgba(255, 255, 255, 0.03);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
+                box-sizing: border-box;
+    
+                 /* 3D 圓滑內陰影 */
+                box-shadow: 
+                    inset 0 2px 4px rgba(255, 255, 255, 0.05),
+                    inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+                    0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Hover 懸停特效：外框青紫漸變 + 霓虹發光 */
+            .btn-neo-home:hover {
+                background: padding-box rgba(255, 255, 255, 0.05),
+                            border-box linear-gradient(135deg, #00ffcc, #a370ff);
+                border-color: transparent !important;
+                box-shadow: 0 0 30px rgba(0, 255, 204, 0.4),
+                            0 0 30px rgba(163, 112, 255, 0.4);
+                transform: translateY(-3px) scale(1.05);
+            }
+
+            /* 屋仔線條預設顏色 */
+            .btn-neo-home svg path.home-path {
+                stroke: var(--text-main);
+                fill: none;
+                transition: stroke 0.4s ease;
+            }
+
+            /* Hover 時屋仔圖標本體變漸變色 */
+            .btn-neo-home:hover svg path.home-path {
+                stroke: url(#walletHomeGradient);
+            }
         footer {
             width: 100%;
             border-top: 1px solid var(--border);
