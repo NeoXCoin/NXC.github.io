@@ -15,214 +15,48 @@
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
         }
+        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; padding-bottom: 50px; }
         
-        body {
-            margin: 0;
-            background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #fff;
-            text-align: center;
-            padding-top: 100px;
-            padding-bottom: 50px;
-        }
+        /* Header 修正：確保手機兩側對齊 */
+        header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); box-sizing: border-box; z-index: 1000; }
+        .nav-logo { height: 32px; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
+        
+        .lang-switch { font-size: 13px; color: rgba(255,255,255,0.7); display: flex; gap: 5px; }
+        .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; font-family: inherit; font-weight: 600; }
 
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 50px;
-            background: rgba(7, 2, 20, 0.6);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
-            box-sizing: border-box;
-            z-index: 1000;
-        }
-
-        .nav-logo {
-            height: 32px;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .lang-switch {
-            font-size: 13px;
-            color: rgba(255,255,255,0.7);
-            display: flex;
-            gap: 5px;
-        }
-
-        .lang-switch a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-        }
-
-        .btn-connect {
-            padding: 8px 18px;
-            border-radius: 999px;
-            background: transparent;
-            color: var(--secondary);
-            border: 1px solid rgba(0, 255, 204, 0.3);
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-connect:hover {
-            background: rgba(0, 255, 204, 0.1);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-        }
-
-        .title-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .title-logo {
-            width: 45px;
-            height: 45px;
-        }
-
-        h1 {
-            font-size: 28px;
-            margin: 0;
-            background: linear-gradient(120deg, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        .container { max-width: 500px; margin: 0 auto; background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
+        .title-box { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .title-logo { width: 45px; height: 45px; }
+        h1 { font-size: 28px; margin: 0; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         /* 動態變色按鈕 */
-        .btn-main {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(163, 112, 255, 0.5);
-            background: linear-gradient(120deg, #a370ff 0%, #00ffcc 50%, #a370ff 100%);
-            background-size: 200% auto;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            font-size: 15px;
-            animation: btnShimmer 3s linear infinite;
-            transition: transform 0.2s ease;
-        }
-
-        .btn-main:active {
-            transform: scale(0.98);
-        }
-
-        @keyframes btnShimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .panel {
-            text-align: left;
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            margin-top: 20px;
-        }
-
-        .mrow {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-            font-size: 14px;
-            gap: 10px;
-        }
-
-        .mrow:last-child {
-            border-bottom: none;
-        }
-
-        /* 處理地址在手機版過長換行的 CSS 修正 */
-        #addr {
-            font-family: monospace; 
-            font-size: 13px;
-            word-break: break-all; /* 允許長地址自動換行，防止衝出框外 */
-            text-align: right;
-        }
-
-        .copy-btn {
-            background: none;
-            border: 1px solid var(--secondary);
-            color: var(--secondary);
-            padding: 2px 8px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 11px;
-            flex-shrink: 0; /* 防止「複製」按鈕被擠壓變形 */
-            transition: all 0.2s ease;
-        }
-
-        .copy-btn:hover {
-            background: rgba(0, 255, 204, 0.2);
-        }
-
-        .copyright {
-            font-size: 12px;
-            color: #888888;
-        }
-
-        .copyright a, .copyright a:visited {
-            font-size: 12px;
-            color: #888888;
-            text-decoration: none;
-        }
-
-        .copyright a:hover {
-            text-decoration: underline;
-        }
+        .btn-main { display: block; width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid rgba(163, 112, 255, 0.5); background: linear-gradient(120deg, #a370ff 0%, #00ffcc 50%, #a370ff 100%); background-size: 200% auto; color: white; font-weight: 700; cursor: pointer; font-size: 15px; animation: btnShimmer 3s linear infinite; }
+        @keyframes btnShimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        .panel { text-align: left; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; }
+        .mrow { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+        .copy-btn { background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+        .back-link { display: block; margin-top: 30px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+        .copyright {font-size: 12px;color: #888888; }
+        .copyright a, .copyright a:visited {font-size: 12px;color: #888888;text-decoration: none; /* 如果想好似依家咁樣條底線，可以加上呢行 */}
+        /* 手機適配 */
 
         /* 手機適配 */
         @media (max-width: 600px) {
             header { padding: 0 20px; }
             .lang-switch { display: none; } /* 手機隱藏語言選單以騰出空間給按鈕 */
-            .container { padding: 30px 20px; margin: 0 15px; } 
-            #addr { font-size: 11px; } /* 手機版將合約字體稍微收細 */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index-zh.html">
-            <img class="nav-logo" src="XNXC.png" alt="NeoX Logo">
-        </a>
+        <a href="index-zh.html"><img class="nav-logo" src="XNXC.png" alt="NeoX Logo"></a>
         <div class="header-right">
             <div class="lang-switch">
-                <a href="add-to-wallet.html">EN</a> | 
-                <a href="add-to-wallet-zh.html" style="color:#fff">繁</a> | 
-                <a href="add-to-wallet-global.html">Global</a>
+                <a href="add-to-wallet.html">EN</a> | <a href="add-to-wallet-zh.html" style="color:#fff">繁</a> | <a href="add-to-wallet-global.html">Global</a>
             </div>
             <button class="btn-connect" id="connect-btn">連接錢包</button>
         </div>
@@ -230,113 +64,52 @@
 
     <div class="container">
         <div class="title-box">
-            <img src="XNXC.png" class="title-logo" alt="NXC Logo">
+            <img src="XNXC.png" class="title-logo">
             <h1>新增 NXC 到錢包</h1>
         </div>
         
-        <button class="btn-main" id="add-token-btn">自動加入 MetaMask</button>
+        <button class="btn-main" onclick="addNxc()">自動加入 MetaMask</button>
         
         <p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">
             MetaMask 支援自動加入。其他錢包請使用下方資料手動輸入：
         </p>
 
         <div class="panel">
-            <div class="mrow">
-                <span>網絡：</span>
-                <span>Base</span>
-            </div>
+            <div class="mrow"><span>網絡：</span> <span>Base</span></div>
             <div class="mrow">
                 <span>合約地址：</span>
-                <div style="display: flex; align-items: center; gap: 8px; max-width: 70%;">
-                    <span id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
-                    <button class="copy-btn" id="copy-btn">複製</button>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span id="addr" style="font-family: monospace; font-size: 13px;">0x9C17...2B40B</span>
+                    <button class="copy-btn" onclick="copyAddr()">複製</button>
                 </div>
             </div>
-            <div class="mrow">
-                <span>代幣符號：</span>
-                <span>NXC</span>
-            </div>
-            <div class="mrow">
-                <span>小數位：</span>
-                <span>18</span>
-            </div>
+            <div class="mrow"><span>代幣符號：</span> <span>NXC</span></div>
+            <div class="mrow"><span>小數位：</span> <span>18</span></div>
         </div>
 
-        <div class="copyright" style="margin-top: 20px;">
-            © 2026 NXC. All rights reserved. | <a href="disclaimer-zh.html">Disclaimer</a>
-        </div>
+         <div class="copyright" style="margin-top: 20px;">© 2025 NXC. All rights reserved.| <a href="disclaimer-zh.html">Disclaimer</a>
+
     </div>
 
     <script>
-        // 代幣相關資訊設定
-        const tokenAddress = '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B'; 
-        const tokenSymbol = 'NXC';
-        const tokenDecimals = 18;
-        const tokenImage = window.location.origin + '/XNXC.png';
-
-        // 1. 連接錢包功能
-        const connectBtn = document.getElementById('connect-btn');
-        connectBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    if (accounts.length > 0) {
-                        connectBtn.innerText = accounts[0].substring(0, 6) + "..." + accounts[0].substring(accounts[0].length - 4);
-                    }
-                } catch (error) {
-                    console.error("User denied account access", error);
-                }
-            } else {
-                alert('請先安裝 MetaMask 或其他 Web3 錢包！');
-            }
+        document.getElementById('connect-btn').addEventListener('click', async () => {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            document.getElementById('connect-btn').innerText = accounts[0].substring(0,6) + "..." + accounts[0].substring(accounts[0].length - 4);
         });
 
-        // 2. 自動新增代幣到錢包功能
-        const addTokenBtn = document.getElementById('add-token-btn');
-        addTokenBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    const wasAdded = await window.ethereum.request({
-                        method: 'wallet_watchAsset',
-                        params: {
-                            type: 'ERC20',
-                            options: {
-                                address: tokenAddress,
-                                symbol: tokenSymbol,
-                                decimals: tokenDecimals,
-                                image: tokenImage,
-                            },
-                        },
-                    });
+        async function addNxc() {
+            try {
+                await window.ethereum.request({ 
+                    method: 'wallet_watchAsset', 
+                    params: { type: 'ERC20', options: { address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', symbol: 'NXC', decimals: 18, image: 'https://neoxcoin.io/XNXC.png' } } 
+                });
+            } catch(e) { alert("請在 MetaMask 瀏覽器中開啟"); }
+        }
 
-                    if (wasAdded) {
-                        alert('成功將 NXC 代幣新增至您的錢包！');
-                    } else {
-                        console.log('使用者拒絕新增代幣。');
-                    }
-                } catch (error) {
-                    console.error(error);
-                    alert('新增代幣失敗，請確保錢包已切換至正確的網路 (Base)。');
-                }
-            } else {
-                alert('未偵測到 Web3 錢包，請在 MetaMask 瀏覽器中開啟或安裝擴充功能。');
-            }
-        });
-
-        // 3. 複製合約地址功能
-        const copyBtn = document.getElementById('copy-btn');
-        copyBtn.addEventListener('click', () => {
-            const addrText = document.getElementById('addr').innerText;
-            navigator.clipboard.writeText(addrText).then(() => {
-                const originalText = copyBtn.innerText;
-                copyBtn.innerText = '已複製！';
-                setTimeout(() => {
-                    copyBtn.innerText = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('複製失敗: ', err);
-            });
-        });
+        function copyAddr() {
+            navigator.clipboard.writeText("0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B");
+            alert("地址已複製！");
+        }
     </script>
 </body>
 </html>
