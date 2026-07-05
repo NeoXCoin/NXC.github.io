@@ -154,10 +154,19 @@
             padding: 10px 0;
             border-bottom: 1px solid var(--border);
             font-size: 14px;
+            gap: 10px; /* 增加間距避免擠壓 */
         }
 
         .mrow:last-child {
             border-bottom: none;
+        }
+
+        /* 【修正重點】處理地址在手機版過長的問題 */
+        #addr {
+            font-family: monospace; 
+            font-size: 13px;
+            word-break: break-all; /* 允許長地址在任何字元處換行，防止衝出框外 */
+            text-align: right;
         }
 
         .copy-btn {
@@ -168,7 +177,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 11px;
-            margin-left: 10px;
+            flex-shrink: 0; /* 防止按鈕被擠壓變形 */
             transition: all 0.2s ease;
         }
 
@@ -195,6 +204,8 @@
         @media (max-width: 600px) {
             header { padding: 0 20px; }
             .lang-switch { display: none; }
+            .container { padding: 30px 20px; margin: 0 15px; } /* 縮小邊距適應小螢幕 */
+            #addr { font-size: 11px; } /* 手機版將字體稍微收細，排版更美觀 */
         }
     </style>
 </head>
@@ -233,9 +244,8 @@
             </div>
             <div class="mrow">
                 <span>Contract:</span>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <!-- 這裡建議放完整的合約地址，隱藏部分只交給 CSS 或 JS 處理，方便複製 -->
-                    <span id="addr" style="font-family: monospace; font-size: 13px;">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
+                <div style="display: flex; align-items: center; gap: 8px; max-width: 70%;">
+                    <span id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
                     <button class="copy-btn" id="copy-btn">Copy</button>
                 </div>
             </div>
@@ -255,11 +265,11 @@
     </div>
 
     <script>
-        // 代幣相關資訊設定（請根據實際情況修改合約地址與圖片網址）
-        const tokenAddress = '0x9C1700000000000000000000000000000002B40B'; 
+        // 代幣相關資訊設定
+        const tokenAddress = '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B'; 
         const tokenSymbol = 'NXC';
         const tokenDecimals = 18;
-        const tokenImage = window.location.origin + '/XNXC.png'; // 自動獲取當前網域下的圖片路徑
+        const tokenImage = window.location.origin + '/XNXC.png';
 
         // 1. 連接錢包功能
         const connectBtn = document.getElementById('connect-btn');
@@ -283,7 +293,6 @@
         addTokenBtn.addEventListener('click', async () => {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    // 提示用戶新增代幣
                     const wasAdded = await window.ethereum.request({
                         method: 'wallet_watchAsset',
                         params: {
