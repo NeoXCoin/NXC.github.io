@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add NXC to Wallet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>新增 NXC 到錢包</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            --bg-dark: #03010a;
+            --text-main: #ffffff;
             --primary: #a370ff;
             --secondary: #00ffcc;
             --glass: rgba(255, 255, 255, 0.03);
@@ -34,7 +37,7 @@
             justify-content: space-between;
             padding: 0 50px;
             background: rgba(7, 2, 20, 0.6);
-            backdrop-filter: blur(15 px);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
             box-sizing: border-box;
             z-index: 1000;
@@ -52,13 +55,13 @@
 
         .lang-switch {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             display: flex;
             gap: 5px;
         }
 
         .lang-switch a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
         }
 
@@ -140,7 +143,7 @@
 
         .panel {
             text-align: left;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0,0,0,0.2);
             padding: 20px;
             border-radius: 12px;
             border: 1px solid var(--border);
@@ -154,10 +157,19 @@
             padding: 10px 0;
             border-bottom: 1px solid var(--border);
             font-size: 14px;
+            gap: 10px;
         }
 
         .mrow:last-child {
             border-bottom: none;
+        }
+
+        /* 處理地址在手機版過長換行的 CSS 修正 */
+        #addr {
+            font-family: monospace; 
+            font-size: 13px;
+            word-break: break-all; /* 允許長地址自動換行，防止衝出框外 */
+            text-align: right;
         }
 
         .copy-btn {
@@ -168,7 +180,7 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 11px;
-            margin-left: 10px;
+            flex-shrink: 0; /* 防止「複製」按鈕被擠壓變形 */
             transition: all 0.2s ease;
         }
 
@@ -194,71 +206,73 @@
         /* 手機適配 */
         @media (max-width: 600px) {
             header { padding: 0 20px; }
-            .lang-switch { display: none; }
+            .lang-switch { display: none; } /* 手機隱藏語言選單以騰出空間給按鈕 */
+            .container { padding: 30px 20px; margin: 0 15px; } 
+            #addr { font-size: 11px; } /* 手機版將合約字體稍微收細 */
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html">
+        <a href="index-zh.html">
             <img class="nav-logo" src="XNXC.png" alt="NeoX Logo">
         </a>
         <div class="header-right">
             <div class="lang-switch">
-                <a href="add-to-wallet.html" style="color: #fff">EN</a> | 
-                <a href="add-to-wallet-zh.html">繁</a> | 
+                <a href="add-to-wallet.html">EN</a> | 
+                <a href="add-to-wallet-zh.html" style="color:#fff">繁</a> | 
                 <a href="add-to-wallet-global.html">Global</a>
             </div>
-            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+            <button class="btn-connect" id="connect-btn">連接錢包</button>
         </div>
     </header>
 
     <div class="container">
         <div class="title-box">
             <img src="XNXC.png" class="title-logo" alt="NXC Logo">
-            <h1>Add NXC Token</h1>
+            <h1>新增 NXC 到錢包</h1>
         </div>
         
-        <button class="btn-main" id="add-token-btn">Add NXC to MetaMask</button>
+        <button class="btn-main" id="add-token-btn">自動加入 MetaMask</button>
         
-        <p style="font-size: 14px; color: rgba(255, 255, 255, 0.6); margin-bottom: 20px;">
-            MetaMask supports auto-add. For other wallets, use the details below:
+        <p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">
+            MetaMask 支援自動加入。其他錢包請使用下方資料手動輸入：
         </p>
 
         <div class="panel">
             <div class="mrow">
-                <span>Network:</span>
+                <span>網絡：</span>
                 <span>Base</span>
             </div>
             <div class="mrow">
-                <span>Contract:</span>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span id="addr" style="font-family: monospace; font-size: 13px;">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
-                    <button class="copy-btn" id="copy-btn">Copy</button>
+                <span>合約地址：</span>
+                <div style="display: flex; align-items: center; gap: 8px; max-width: 70%;">
+                    <span id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
+                    <button class="copy-btn" id="copy-btn">複製</button>
                 </div>
             </div>
             <div class="mrow">
-                <span>Symbol:</span>
+                <span>代幣符號：</span>
                 <span>NXC</span>
             </div>
             <div class="mrow">
-                <span>Decimals:</span>
+                <span>小數位：</span>
                 <span>18</span>
             </div>
         </div>
 
         <div class="copyright" style="margin-top: 20px;">
-            © 2026 NXC. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
+            © 2026 NXC. All rights reserved. | <a href="disclaimer-zh.html">Disclaimer</a>
         </div>
     </div>
 
     <script>
-        // 【已修正】更換為你正確的 Base 鏈合約地址
+        // 代幣相關資訊設定
         const tokenAddress = '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B'; 
         const tokenSymbol = 'NXC';
         const tokenDecimals = 18;
-        const tokenImage = window.location.origin + '/XNXC.png'; // 自動獲取當前網域下的圖片路徑
+        const tokenImage = window.location.origin + '/XNXC.png';
 
         // 1. 連接錢包功能
         const connectBtn = document.getElementById('connect-btn');
@@ -273,7 +287,7 @@
                     console.error("User denied account access", error);
                 }
             } else {
-                alert('Please install MetaMask or another Web3 wallet!');
+                alert('請先安裝 MetaMask 或其他 Web3 錢包！');
             }
         });
 
@@ -282,7 +296,6 @@
         addTokenBtn.addEventListener('click', async () => {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    // 提示用戶新增代幣
                     const wasAdded = await window.ethereum.request({
                         method: 'wallet_watchAsset',
                         params: {
@@ -297,16 +310,16 @@
                     });
 
                     if (wasAdded) {
-                        alert('NXC Token successfully added to your wallet!');
+                        alert('成功將 NXC 代幣新增至您的錢包！');
                     } else {
-                        console.log('User declined to add the token.');
+                        console.log('使用者拒絕新增代幣。');
                     }
                 } catch (error) {
                     console.error(error);
-                    alert('Error adding token to wallet. Make sure you are connected to the correct network (Base).');
+                    alert('新增代幣失敗，請確保錢包已切換至正確的網路 (Base)。');
                 }
             } else {
-                alert('Web3 wallet not detected. Please install MetaMask to use this feature.');
+                alert('未偵測到 Web3 錢包，請在 MetaMask 瀏覽器中開啟或安裝擴充功能。');
             }
         });
 
@@ -316,12 +329,12 @@
             const addrText = document.getElementById('addr').innerText;
             navigator.clipboard.writeText(addrText).then(() => {
                 const originalText = copyBtn.innerText;
-                copyBtn.innerText = 'Copied!';
+                copyBtn.innerText = '已複製！';
                 setTimeout(() => {
                     copyBtn.innerText = originalText;
                 }, 2000);
             }).catch(err => {
-                console.error('Failed to copy text: ', err);
+                console.error('複製失敗: ', err);
             });
         });
     </script>
