@@ -1,369 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <title>What is NeoX? – Empowering Web3 Freedom</title>
-  <meta name="description" content="Discover NeoX (NXC) – a decentralized Web3 utility token ecosystem built on Base network for gaming, NFTs, and metaverse expansion." />
-  <link rel="canonical" href="https://neoxcoin.github.io/what-is-neox.html" />
-  
-  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox.html" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-global.html" hreflang="x-default" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bg-dark: #03010a;
-      --text-main: #ffffff;
-      --text-muted: rgba(255, 255, 255, 0.7);
-      --primary: #a370ff;
-      --secondary: #00ffcc;
-      --glass: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --font-stack: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      /* Unified Premium Starfield Background */
-      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-      background-image: 
-        radial-gradient(circle at center, #110526 0%, #03010a 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-      
-      font-family: var(--font-stack);
-      color: var(--text-main);
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
-
-    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 50px;
-      background: rgba(7, 2, 20, 0.6);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      box-sizing: border-box;
-    }
-
-    .nav-logo { height: 32px; opacity: 0.9; }
-    .nav-logo:hover { opacity: 1; }
-
-    .nav-links { display: flex; gap: 30px; align-items: center; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--primary); }
-
-    .header-right { display: flex; align-items: center; gap: 20px; }
-    
-    .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
-    .language-switch a:hover { color: var(--text-main); }
-    .lang-sep { opacity: 0.3; }
-
-    .btn-connect {
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--secondary);
-      border: 1px solid rgba(0, 255, 204, 0.3);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-connect:hover {
-      background: rgba(0, 255, 204, 0.05);
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
-    }
-
-    /* --- Main Container --- */
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 140px 20px 80px 20px;
-    }
-
-    /* --- 2. Hero Section Animations --- */
-    @keyframes fadeInUpLoopSlow {
-      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-      18% { opacity: 1; transform: translateY(0); filter: blur(0); }
-      86% { opacity: 1; transform: translateY(0); filter: blur(0); }
-      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
-      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-    }
-
-    @keyframes textShimmer {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .page-title {
-      font-size: 52px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: 
-        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
-        textShimmer 4s linear infinite;
-    }
-
-    .page-subtitle {
-      font-size: 18px;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto 60px auto;
-      line-height: 1.6;
-      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
-    }
-
-    /* --- 3. Info Cards Grid --- */
-    .grid-layout {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      text-align: left;
-      margin-bottom: 50px;
-    }
-
-    .info-card {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      padding: 40px;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-    }
-    .info-card:hover {
-      border-color: rgba(163, 112, 255, 0.3);
-      background: rgba(255, 255, 255, 0.05);
-      transform: translateY(-2px);
-    }
-
-    .card-icon {
-      font-size: 28px;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-
-    .card-title {
-      font-size: 22px;
-      font-weight: 700;
-      margin: 0 0 15px 0;
-      color: #ffffff;
-    }
-
-    .card-text {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .highlight-badge {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--secondary);
-      background: rgba(0, 255, 204, 0.1);
-      padding: 4px 10px;
-      border-radius: 6px;
-      margin-top: 15px;
-    }
-
-    /* --- Footer --- */
-    footer {
-      width: 100%;
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      margin-top: 80px;
-      background: rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .social-icons { margin-bottom: 25px; }
-    .social-icons img {
-        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
-        width: 18px;
-        height: 18px; 
-        margin: 0 15px;
-    
-        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
-        padding: 4px; 
-    
-        /* 圓框設定保持 */
-        background: rgba(255, 255, 255, 0.05); 
-        border: 1px solid rgba(255, 255, 255, 0.15); 
-        border-radius: 50%; 
-    
-        /* 之前你調校好的深灰色濾鏡 */
-        filter: grayscale(100%) brightness(0.7); 
-        opacity: 0.9; 
-    
-        transition: all 0.2s ease;
-        box-sizing: content-box; 
-    }
-
-    /* Hover 效果保持不變 */
-    .social-icons img:hover {
-        filter: grayscale(0%) brightness(1); 
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.15); 
-        border-color: rgba(255, 255, 255, 0.4); 
-        transform: scale(1.1);
-    }
-
-    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-    .footer-links a { margin: 0 8px; }
-    .footer-links a:hover { color: var(--text-main); }
-    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
-
-    @media (max-width: 950px) {
-      header { padding: 0 20px; }
-      .nav-links { display: none; }
-      .page-title { font-size: 38px; }
-      .grid-layout { grid-template-columns: 1fr; gap: 20px; }
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>NeoX Catch – Level 1 (Modded)</title>
+    <style>
+        html,body{height:100%;margin:0;background:#0a0b1f;color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif; overflow:hidden; }
+        #wrap{position:relative;height:100%;display:grid;place-items:center;}
+        canvas{display:block;width:min(92vw,700px);aspect-ratio:9/16;height:auto; border-radius:16px;background:#000; box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06); touch-action:none; position:relative; z-index:1; }
+        /* HUD */
+        .hud{position:absolute; inset:0; z-index:5; pointer-events:none; display:grid; grid-template-rows:auto 1fr;}
+        @media (max-width: 600px) {
+            .topbar{ position:relative; display:block; padding:10px 14px; }
+            .topbar .left  { position:absolute; left:10px;  top:10px; }
+            .topbar .right { position:absolute; right:10px; top:10px; }
+            .topbar .center{position:absolute; left:50%; top:10px; transform:translateX(-50%); text-align:center; pointer-events:none; }
+        }
+        .topbar{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:start; gap:10px; padding:10px 14px; font-weight:800; justify-items:center; }
+        .left{  justify-self:start; pointer-events:auto; }
+        .center{justify-self:center; text-align:center; pointer-events:none; }
+        .right { justify-self: end; pointer-events: auto; }
+        .badge{display:inline-block;padding:8px 12px;border-radius:12px; background:rgba(255,255,255,.14);backdrop-filter:blur(3px); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);margin:0 6px;font-weight:900; }
+        .iconbtn{display:inline-flex;align-items:center;gap:10px;background:#1b2144;border:0;color:#fff;border-radius:14px; padding:10px 14px;font-weight:800;box-shadow:0 10px 28px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.08);cursor:pointer; pointer-events:auto; }
+        .iconbtn img{width:22px;height:22px;object-fit:contain;display:block;}
+        .panel{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); pointer-events:auto; z-index:10; min-width:clamp(240px,80%,520px); text-align:center; padding:18px 16px 20px;border-radius:16px;background:rgba(10,12,34,.88); box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.08); backdrop-filter:blur(4px); }
+        .panel h1{margin:8px 0 10px;font-size:clamp(22px,5.2vw,30px);}
+        .panel p{margin:0 0 14px;color:#c8d2ff;font-size:14px;line-height:1.55;}
+        .row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+        .btn{border:0;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer;color:#fff;background:#2b7cff; box-shadow:0 8px 22px rgba(43,124,255,.35);}
+        .btn.alt{background:#1f2648;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);}
+        .hidden{display:none !important;}
+    </style>
 </head>
 <body>
-
-  <header>
-    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
-    
-    <div class="nav-links">
-      <a href="what-is-neox.html">What is NeoX?</a>
-      <a href="how-to-buy.html">How to Buy?</a>
-      <a href="game.html">NeoX Game</a>
-      <a href="metaverse.html">Metaverse Exhibition</a>
-      <a href="nft-projects.html">NFT Projects</a>
+<div id="wrap">
+    <canvas id="game" width="450" height="800" aria-label="NeoX Catch Level 1"></canvas>
+    <div class="hud" aria-live="polite">
+        <div class="topbar">
+            <div class="left">
+                <button id="btnHome" class="iconbtn" title="Back to Home">
+                    <img src="https://neoxcoin.github.io/neox-game/XNXC.png" alt="Home">
+                    <span>Home</span>
+                </button>
+            </div>
+            <div class="center">
+                <span class="badge" id="scoreBadge">Score: 0</span>
+                <span class="badge" id="timeBadge">Time: 03:00</span>
+                <span class="badge" id="bestBadge">Best: 0</span>
+                <span class="badge" id="missBadge">Miss: 0/60</span>
+            </div>
+            <div class="right">
+                <button id="btnPause" class="iconbtn" title="Pause/Resume (P)">⏸ Pause</button>
+            </div>
+        </div>
+        <!-- Panels -->
+        <div id="panelStart" class="panel">
+            <h1>NeoX Catch — Level 1</h1>
+            <p>Move the <b>Treasure Box</b> to catch falling <b>NeoX Coins</b>.<br>注意：避開紅色的<b>炸彈</b>！<br>Keyboard <b>← →</b> or drag left & right.</p>
+            <div class="row"><button id="btnStart" class="btn">▶ Start</button></div>
+        </div>
+        <div id="panelPause" class="panel hidden">
+            <h1>Paused</h1>
+            <div class="row">
+                <button id="btnResume" class="btn">⏵ Resume</button>
+                <button id="btnRestart2" class="btn alt">🔄 Restart</button>
+            </div>
+        </div>
+        <div id="panelWin" class="panel hidden">
+            <h1 id="winTitle">Time’s up ⏱️</h1>
+            <p><span id="finalScore">Score: 0</span> · <span id="bestScore">Best: 0</span></p>
+            <div class="row">
+                <button id="btnNextLevel" class="btn">Go to Level 2 ▶</button>
+                <button id="btnReplay" class="btn alt">Replay</button>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="header-right">
-      <div class="language-switch">
-        <a href="what-is-neox.html">EN</a>
-        <span class="lang-sep">|</span>
-        <a href="what-is-neox-zh.html">繁</a>
-        <span class="lang-sep">|</span>
-        <a href="what-is-neox-global.html">Global</a>
-      </div>
-      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
-    </div>
-  </header>
+<script>
+    /* ====== 防熱鏈：只俾自己個 domain / iframe host 用 ====== */
+    (function () {const HOME = 'https://neoxcoin.io/'; const HUB = 'https://neoxcoin.io/neox-game/'; const ALLOWED_PARENTS = ['https://neoxcoin.github.io', 'https://neoxcoin.io' ]; if (window.top !== window.self) {try {const ref = document.referrer || ''; const origin = ref ? new URL(ref).origin : ''; if (!ALLOWED_PARENTS.includes(origin)) {window.top.location.replace(HUB); return; } } catch (e) {window.top.location.replace(HUB); return; } } })();
 
-  <div class="container">
-    
-    <h1 class="page-title">What is NeoX Coin?</h1>
-    <p class="page-subtitle">NeoX (NXC) is a cutting-edge, community-driven decentralized utility asset engineered on Base Mainnet, unlocking a borderless ecosystem for interactive gaming, immersive metaverse applications, and creative digital assets.</p>
+    /* ====== Config ====== */
+    const TOTAL_TIME_SEC = 180;
+    const EDGE = 2;
+    const MAX_MISSES = 60;
 
-    <div class="grid-layout">
-      
-      <div class="info-card">
-        <span class="card-icon">🚀</span>
-        <h3 class="card-title">Next-Gen Base Utility</h3>
-        <p class="card-text">By building exclusively on Coinbase's L2 network (Base), NeoX ensures ultra-low transaction gas fees and near-instant processing times, offering users a seamless Web3 interaction model without typical scalability barriers.</p>
-        <span class="highlight-badge">Base Network Mainnet</span>
-      </div>
+    /* ====== Assets ====== */
+    const BG_URL    = "https://neoxcoin.github.io/neox-game/forest%20background%20.PNG";
+    const CHEST_URL = "https://neoxcoin.github.io/neox-game/treasure-box.png";
+    const COIN_URL  = "https://neoxcoin.github.io/neox-game/NeoXCoin.Front.png";
 
-      <div class="info-card">
-        <span class="card-icon">🎮</span>
-        <h3 class="card-title">Gaming Integration</h3>
-        <p class="card-text">NXC acts as the fundamental currency fueling on-chain and off-chain gaming protocols within the NeoX umbrella. Unlock achievements, buy premium Web3 gear, and participate in truly decentralized gameplay mechanics.</p>
-        <span class="highlight-badge">Play & Earn Protocol</span>
-      </div>
+    /* ====== Canvas (HiDPI) ====== */
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    function fitHiDPI(){const cssW = canvas.clientWidth, cssH = canvas.clientHeight; const dpr = Math.max(1, Math.min(devicePixelRatio||1, 2)); if (canvas.width !== Math.round(cssW*dpr)) {canvas.width = Math.round(cssW*dpr); canvas.height = Math.round(cssH*dpr); } ctx.setTransform(dpr,0,0,dpr,0,0); }
+    fitHiDPI(); addEventListener('resize', fitHiDPI);
 
-      <div class="info-card">
-        <span class="card-icon">🔥</span>
-        <h3 class="card-title">Metaverse Hubs</h3>
-        <p class="card-text">Step into virtual landscapes, digital art exhibitions, and interactive community spaces. NeoX serves as the medium of value exchange for acquiring digital land plots, accessing exclusive virtual galleries, and custom avatars.</p>
-        <span class="highlight-badge">Immersive Environments</span>
-      </div>
+    /* ====== State ====== */
+    const State={READY:0,PLAYING:1,PAUSED:2,WIN:3,OVER:4}; let state=State.READY;
 
-      <div class="info-card">
-        <span class="card-icon">💎</span>
-        <h3 class="card-title">100% Secure & Audited</h3>
-        <p class="card-text">Ecosystem transparency is our highest priority. The NXC smart contract is verified and integrated directly into trusted decentralized deployment platforms like Thirdweb, ensuring fair distribution and absolute safety for all token holders.</p>
-        <span class="highlight-badge">Verified Smart Contract</span>
-      </div>
+    /* ====== HUD refs ====== */
+    const scoreBadge   = document.getElementById('scoreBadge');
+    const bestBadge    = document.getElementById('bestBadge');
+    const timeBadge    = document.getElementById('timeBadge');
+    const missBadge    = document.getElementById('missBadge');
+    const panelStart   = document.getElementById('panelStart');
+    const panelPause   = document.getElementById('panelPause');
+    const panelWin     = document.getElementById('panelWin');
+    const finalScore   = document.getElementById('finalScore');
+    const bestScore    = document.getElementById('bestScore');
+    const winTitle     = document.getElementById('winTitle');
+    const btnNextLevel = document.getElementById('btnNextLevel');
+    const btnReplay    = document.getElementById('btnReplay');
 
-    </div>
+    /* ====== Images ====== */
+    const bgImg=new Image(); bgImg.src=BG_URL; let bgReady=false; bgImg.onload=()=>bgReady=true;
+    const chestImg=new Image(); chestImg.src=CHEST_URL; let chestReady=false; chestImg.onload=()=>chestReady=true;
+    const coinImg=new Image(); coinImg.src=COIN_URL; let coinReady=false; coinImg.onload=()=>coinReady=true;
 
-  </div>
+    /* ====== Player (Chest) ====== */
+    const chest={x:225,y:0,w:220,h:160,speed:6.2,vx:0};
+    function isMobile(){return /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent);}
+    function visibleCanvasHeight(){const rect=canvas.getBoundingClientRect(); const vp=window.visualViewport; if(vp){ const vb=(vp.offsetTop||0)+vp.height; return Math.max(0, Math.min(rect.bottom,vb)-rect.top); } return rect.height; }
+    function placeChest(){const H=visibleCanvasHeight(); const land=matchMedia('(orientation: landscape)').matches; const bottomMargin = isMobile()? 18 : (land ? Math.max(24, H*0.05) : Math.max(24, H*0.035)); const targetW = Math.min(canvas.clientWidth*(isMobile()?0.30:0.28), 280); chest.w = targetW; chest.h = Math.round(targetW*0.72); chest.y = Math.max(chest.h, H - bottomMargin); const cx = (chest.x || canvas.clientWidth/2); chest.x = Math.max(chest.w/2 + EDGE, Math.min(cx, canvas.clientWidth - chest.w/2 - EDGE)); }
+    placeChest(); addEventListener('resize', placeChest); addEventListener('orientationchange', placeChest);
 
-  <footer>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
-      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
-    </div>
-    <div class="footer-links">
-      <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
-    </div>
-    <div class="copyright">© 2026 NeoX. All rights reserved.</div>
-  </footer>
+    /* ====== Score/Timer/Miss ====== */
+    let score=0; let best = Number(localStorage.getItem('neox_catch_best_l1') ?? localStorage.getItem('neox_catch_best') ?? 0); let timeLeft = TOTAL_TIME_SEC; let missCount = 0;
+    function fmt(t){ const m=Math.floor(t/60), s=Math.floor(t%60); return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`; }
+    function refreshHUD(){scoreBadge.textContent=`Score: ${Math.floor(score)}`; bestBadge.textContent =`Best: ${Math.floor(best)}`; timeBadge.textContent =`Time: ${fmt(timeLeft)}`; missBadge.textContent =`Miss: ${missCount}/${MAX_MISSES}`; finalScore.textContent=`Score: ${Math.floor(score)}`; bestScore.textContent =`Best: ${Math.floor(best)}`; window.parent?.postMessage({ type:'NX_CARRY', score: Math.floor(score) }, '*'); }
 
-  <script>
-    const connectBtn = document.getElementById('connect-btn');
+    /* ====== Audio (mobile-safe) ====== */
+    let audioCtx = null, masterGain = null;
+    function ensureAudio(){if (audioCtx) return; const Ctx = window.AudioContext || window.webkitAudioContext; audioCtx = new Ctx(); masterGain = audioCtx.createGain(); masterGain.gain.value = 0.8; masterGain.connect(audioCtx.destination); }
+    function unlockAudioOnce(){ensureAudio(); if (!audioCtx) return; const buf = audioCtx.createBuffer(1, 1, 22050); const src = audioCtx.createBufferSource(); src.buffer = buf; src.connect(masterGain); try { src.start(0); } catch(e){} }
+    async function resumeAudio(){ensureAudio(); try{unlockAudioOnce(); if (audioCtx.state === 'suspended') await audioCtx.resume(); }catch(e){} }
+    function beep(f=440,d=0.12,v=0.2,type='sine'){ensureAudio(); if (!audioCtx || audioCtx.state!=='running') return; const n=audioCtx.currentTime, o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type=type; o.frequency.setValueAtTime(f,n); g.gain.setValueAtTime(v,n); g.gain.exponentialRampToValueAtTime(0.0001, n + d*0.9); o.connect(g).connect(masterGain); o.start(n); o.stop(n+d); }
+    const SFX = {click(){ beep(700,.07,.12,'triangle'); }, star(){ beep(880,.08,.18); setTimeout(()=>beep(1320,.10,.12),40); }, win(){ [660,880,990,1320].forEach((f,i)=>setTimeout(()=>beep(f,.14,.16),90*i)); }, miss(){ beep(260,.12,.18); }, over(){ [300,260,220].forEach((f,i)=>setTimeout(()=>beep(f,.18,.22),120*i)); }, bomb(){ beep(150,.3,.35,'sawtooth'); } };
+    ['pointerdown','touchend','mousedown','keydown','click'].forEach(evt=>{window.addEventListener(evt, resumeAudio, {once:true, passive:true}); }); document.addEventListener('visibilitychange', ()=>{ if (document.visibilityState === 'visible') resumeAudio(); });
 
-    async function checkConnection() {
-      if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) {
-          updateButton(accounts[0]);
+    /* ====== Buttons ====== */
+    document.getElementById('btnHome').onclick = () => { (window.top || window).location.replace('https://neoxcoin.io/'); };
+    document.getElementById('btnStart').onclick=()=>{start();}; document.getElementById('btnRestart2').onclick=()=>{restart();}; document.getElementById('btnReplay').onclick=()=>{restart();}; document.getElementById('btnResume').onclick=()=>{togglePause(false);}; const btnPause=document.getElementById('btnPause'); btnPause.onclick=()=>togglePause();
+    btnNextLevel.onclick = () => {const carry = Math.floor(score); localStorage.setItem('nx_carry', String(carry)); if (window.parent && window.parent !== window) {window.parent.postMessage({type: 'NX_GO_LEVEL', from: 1, to: 2, score: carry }, '*'); } else {window.location.href = 'v2.html#continue'; } };
+
+    /* ====== Input ====== */
+    const keys=new Set(); addEventListener('keydown',e=>{if(e.repeat) return; if(e.key==='ArrowLeft') keys.add('L'); if(e.key==='ArrowRight') keys.add('R'); if(e.key.toLowerCase()==='p') togglePause(); if(e.key.toLowerCase()==='r') restart(); if(state===State.READY && (e.key===' '||e.key==='Enter')) start(); }); addEventListener('keyup',e=>{ if(e.key==='ArrowLeft') keys.delete('L'); if(e.key==='ArrowRight') keys.delete('R'); });
+    let pointerId=null; canvas.addEventListener('pointerdown',e=>{const p=(e.changedTouches&&e.changedTouches[0])||e; pointerId=p.identifier??'mouse'; if(state===State.READY) start(); e.preventDefault(); },{passive:false}); addEventListener('pointermove',e=>{const p=(e.changedTouches && ([...e.changedTouches].find(t => (t.identifier ?? 'mouse')===pointerId)))||e; if(!p) return; const rect=canvas.getBoundingClientRect(); const cx=(p.clientX-rect.left)/rect.width*canvas.clientWidth; const diff=cx-chest.x; chest.vx=Math.max(-chest.speed, Math.min(chest.speed, diff*0.25)); e.preventDefault(); },{passive:false}); addEventListener('pointerup',()=>{pointerId=null; chest.vx=0;},{passive:false}); addEventListener('pointercancel',()=>{pointerId=null; chest.vx=0;},{passive:false}); addEventListener('blur',()=>{ if(state===State.PLAYING) togglePause(true); });
+
+    /* ====== Coins & Bombs ====== */
+    const coins = []; let spawnTimer = 0;
+    function spawnCoins(dt) {
+        spawnTimer -= dt;
+        const maxOnScreen = 6; // 稍微增加上限讓畫面更豐富
+        if (spawnTimer <= 0 && coins.length < maxOnScreen) {
+            const SAFE_MARGIN = chest.w * 0.12;
+            
+            // 💡 新增機制 1：計算時間流逝，隨時間「動態增加速度」
+            // 遊戲時間 180 秒，每過 30 秒速度基數就提高
+            const elapsed = TOTAL_TIME_SEC - timeLeft;
+            const speedBoost = Math.min(3.5, elapsed / 30); // 最高額外加 3.5 速度
+
+            // 💡 新增機制 2：25% 的機率生成「炸彈」而不是金幣
+            const isBomb = Math.random() < 0.25;
+
+            coins.push({
+                x: EDGE + SAFE_MARGIN + Math.random() * (canvas.clientWidth - 2 * (EDGE + SAFE_MARGIN)),
+                y: -20,
+                r: 12,
+                vy: 2.6 + speedBoost + Math.random() * 2.2, // 基礎速度加上時間加乘
+                spin: Math.random() * Math.PI * 2,
+                vspin: -0.12 + Math.random() * 0.24,
+                isBomb: isBomb // 標記是不是炸彈
+            });
+            spawnTimer = 0.45 + Math.random() * 0.55; // 生成間隔稍微變快一點
         }
-      }
     }
 
-    function updateButton(address) {
-      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-      connectBtn.innerText = shortAddress;
-      connectBtn.style.color = "#00ffcc";
-      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-    }
+    /* ====== Flow ====== */
+    function start(){score=0; timeLeft=TOTAL_TIME_SEC; missCount=0; coins.length=0; spawnTimer=0; chest.x=canvas.clientWidth/2; chest.vx=0; placeChest(); state=State.PLAYING; panelStart.classList.add('hidden'); panelPause.classList.add('hidden'); panelWin.classList.add('hidden'); refreshHUD(); btnPause.textContent='⏸ Pause'; }
+    function togglePause(forcePause){if(state===State.PLAYING && (forcePause??true)){ state=State.PAUSED; panelPause.classList.remove('hidden'); btnPause.textContent='⏵ Resume'; } else if(state===State.PAUSED){ state=State.PLAYING; panelPause.classList.add('hidden'); btnPause.textContent='⏸ Pause'; } }
+    function restart(){panelWin.classList.add('hidden'); panelPause.classList.add('hidden'); start(); }
+    function finishWin(){state=State.WIN; best=Math.max(best,Math.floor(score)); localStorage.setItem('neox_catch_best_l1', String(best)); localStorage.setItem('neox_last_score', String(Math.floor(score))); const prevTotal=Number(localStorage.getItem('neox_total_score')||0); localStorage.setItem('neox_total_score', String(prevTotal+Math.floor(score))); localStorage.setItem('neox_last_level','1'); localStorage.setItem('nx_carry', String(Math.floor(score))); winTitle.textContent = "Stage Clear! 🎉"; refreshHUD(); btnNextLevel.classList.remove('hidden'); panelWin.classList.remove('hidden'); SFX.win(); }
+    function finishOver(){state=State.OVER; best=Math.max(best,Math.floor(score)); localStorage.setItem('neox_catch_best_l1', String(best)); winTitle.textContent = "Game Over 🤭"; refreshHUD(); btnNextLevel.classList.add('hidden'); panelWin.classList.remove('hidden'); SFX.over(); }
 
-    connectBtn.addEventListener('click', async () => {
-      if (typeof window.ethereum !== 'undefined') {
-        try {
-          connectBtn.innerText = "Connecting...";
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          updateButton(accounts[0]);
-        } catch (error) {
-          console.error("Wallet login error:", error);
-          connectBtn.innerText = "Connect Wallet";
+    /* ====== Loop ====== */
+    let last=performance.now();
+    function loop(now){
+        requestAnimationFrame(loop); fitHiDPI(); const dt=Math.min(50, now-last)/16.6667; last=now; drawBackground();
+        if(state===State.PLAYING){
+            timeLeft = Math.max(0, timeLeft - dt/60); if(timeLeft<=0){ return finishWin(); }
+            chest.vx=(keys.has('L')?-chest.speed:0)+(keys.has('R')?chest.speed:0) || chest.vx*0.92; chest.x = Math.max(chest.w/2 + EDGE, Math.min(canvas.clientWidth - chest.w/2 - EDGE, chest.x + chest.vx));
+            spawnCoins(dt);
+            for(const c of coins){ c.y+=c.vy*dt; c.spin+=c.vspin*dt; }
+            const baseRx = chest.w * 0.36, baseRy = chest.h * 0.18; const overhangL = Math.max(0, (chest.w/2 + EDGE) - chest.x); const overhangR = Math.max(0, (chest.w/2 + EDGE) - (canvas.clientWidth - chest.x)); const edgeBoost = overhangL + overhangR + 4; const mouth = { cx: chest.x, cy: chest.y - chest.h * 0.58, rx: baseRx + edgeBoost, ry: baseRy };
+            
+            for (let i=coins.length-1; i>=0; i--){
+                const c = coins[i]; const ex = (c.x - mouth.cx) / mouth.rx; const ey = (c.y - mouth.cy) / mouth.ry;
+                if (ex*ex + ey*ey <= 1){
+                    // 💡 判定吃到東西
+                    if (c.isBomb) {
+                        score = Math.max(0, score - 20); // 炸彈扣 20 分 (最低 0 分)
+                        SFX.bomb(); // 播放爆炸低音
+                    } else {
+                        score += 10; // 金幣加 10 分
+                        SFX.star();
+                    }
+                    coins.splice(i,1); refreshHUD();
+                } else if (c.y > canvas.clientHeight + 30){
+                    // 💡 東西掉出螢幕外
+                    if (!c.isBomb) {
+                        missCount++; // 只有「漏接金幣」才算 Miss，炸彈沒接到是正確的！
+                        SFX.miss();
+                        if(missCount>=MAX_MISSES){ return finishOver(); }
+                    }
+                    coins.splice(i,1); refreshHUD();
+                }
+            }
         }
-      } else {
-        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
-        window.open('https://metamask.io/download/', '_blank');
-      }
-    });
+        drawChest(); drawCoins();
+    }
+    requestAnimationFrame(loop);
 
-    window.addEventListener('DOMContentLoaded', checkConnection);
-  </script>
-
+    /* ====== Render ====== */
+    function drawBackground(){const w=canvas.clientWidth,h=canvas.clientHeight; ctx.clearRect(0,0,w,h); if(!bgReady){ const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,'#0f1240'); g.addColorStop(1,'#0a0c22'); ctx.fillStyle=g; ctx.fillRect(0,0,w,h); return; } const iw=bgImg.width, ih=bgImg.height, ir=iw/ih, cr=w/h; let dw,dh,dx,dy; if(ir>cr){ dh=h; dw=h*ir; dx=(w-dw)/2; dy=0; } else { dw=w; dh=w/ir; dx=0; dy=(h-dh)/2; } ctx.drawImage(bgImg,dx,dy,dw,dh); }
+    function drawChest(){const {x,y,w,h}=chest; const glow=ctx.createRadialGradient(x,y-24,6,x,y-24,120); glow.addColorStop(0,'rgba(43,124,255,0.30)'); glow.addColorStop(1,'rgba(43,124,255,0)'); ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(x, y-24, 90, 0, Math.PI*2); ctx.fill(); if(chestReady){ ctx.save(); ctx.shadowColor='rgba(0,0,0,.35)'; ctx.shadowBlur=18; ctx.drawImage(chestImg, x-w/2, y-h, w, h); ctx.restore(); } else{ ctx.fillStyle='#1c274f'; ctx.fillRect(x-w/2, y-h, w, h); } }
+    
+    function drawCoins(){
+        for(const c of coins){
+            let size = c.r * 3; if (window.innerWidth < 600) size *= 0.7; const r = size / 2;
+            ctx.save(); ctx.translate(c.x,c.y); ctx.rotate(c.spin);
+            
+            if (c.isBomb) {
+                // 💡 繪製炸彈效果：紅底、帶有警示光芒的圓形（如果之後有圖片可以換成圖片）
+                ctx.save();
+                ctx.shadowColor='rgba(255,0,0,.9)';
+                ctx.shadowBlur=20;
+                
+                // 外圈紅
+                ctx.fillStyle = '#ff3333';
+                ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.fill();
+                
+                // 內圈深紅/黑
+                ctx.fillStyle = '#220000';
+                ctx.beginPath(); ctx.arc(0,0,r*0.6,0,Math.PI*2); ctx.fill();
+                
+                // 炸彈引信
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 3;
+                ctx.beginPath(); ctx.moveTo(0, -r); ctx.quadraticCurveTo(r*0.5, -r*1.5, r*0.8, -r*1.2); ctx.stroke();
+                ctx.restore();
+            } else {
+                // 正常金幣
+                if(coinReady){ ctx.save(); ctx.shadowColor='rgba(255,223,128,.8)'; ctx.shadowBlur=18; ctx.drawImage(coinImg,-r,-r,size,size); ctx.restore(); }
+                else{ const g=ctx.createRadialGradient(0,0,r*.2,0,0,r); g.addColorStop(0,'#fff6cc'); g.addColorStop(1,'#e3b23c'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.fill(); }
+            }
+            ctx.restore();
+        }
+    }
+</script>
 </body>
 </html>
