@@ -162,23 +162,25 @@
         }
 
         .nft-content-row {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
+           display: flex;
+           flex-direction: row; 
+           align-items: center;    /* 垂直置中 */
+           justify-content: center; /* 水平置中 */
+           gap: 24px;              /* 保持間距 */
+           flex-wrap: wrap;        /* 關鍵：當空間不足時，讓元素自動換行，而不是撐爆容器 */
+       }
 
-        @media (min-width: 640px) {
-            .nft-content-row {
-                flex-direction: row;
-                align-items: center;
-            }
-            .nft-media {
-                flex: 0 0 240px;
-            }
-            .nft-info {
-                flex: 1;
-            }
-        }
+        @media (min-width: 768px) {
+        .nft-content-row {
+            max-width: 900px;  /* 限制最大寬度，防止放大時過度擴張 */
+            margin: 0 auto;    /* 強制居中 */
+       }
+       .nft-media {
+            flex: 0 0 240px;
+       }
+       .nft-info {
+            flex: 1;
+       }
 
         .nft-series h3 {
             color: var(--primary);
