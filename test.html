@@ -96,7 +96,39 @@
 
         .icon-small { width: 18px; height: 18px; object-fit: contain; }
 
-        /* 標題漸變效果 */
+        /* --- Main Container --- */
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 40px 20px 50px 20px; /* 將第一個數值 140px 改做 40px */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            margin-top: 20px; /* 將 130px 改做 20px */
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        /* Animation: Continuous Elegant Slow Fade-in Up (14s loop) */
+        @keyframes fadeInUpLoopSlow {
+          0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+          18% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Fully visible at 2.5s */
+          86% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Still state holding */
+          93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); } /* Fading away */
+          100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+        }
+
+        /* Animation: Aurora Shimmer shifting within text (4s loop) */
+        @keyframes textShimmer {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
         .tagline {
           font-size: 56px;
           font-weight: 800;
@@ -126,49 +158,16 @@
           animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
 
-        /* --- Main Container --- */
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 40px 20px 20px 20px; /* 將第一個數值 140px 改做 40px */
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-         margin-bottom: 80px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        /* Animation: Continuous Elegant Slow Fade-in Up (14s loop) */
-        @keyframes fadeInUpLoopSlow {
-          0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-          18% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Fully visible at 2.5s */
-          86% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Still state holding */
-          93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); } /* Fading away */
-          100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-        }
-
-        /* Animation: Aurora Shimmer shifting within text (4s loop) */
-        @keyframes textShimmer {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
         /* --- NFT 卡片 RWD 布局 --- */
         .nft-series {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 20px 24px;
+            padding: 30px 24px;
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         .nft-content-row {
