@@ -103,27 +103,17 @@
           line-height: 1.1;
           margin-bottom: 15px;
       
-         /* Liquid multi-tone aurora gradient mapped to enlarged background canvas */
+        /* Liquid multi-tone aurora gradient mapped to enlarged background canvas */
           background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
           background-size: 200% auto;
       
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
       
-         /* Dual animation stacking */
+        /* Dual animation stacking */
           animation: 
-          fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
-          textShimmer 4s linear infinite;
-        }
-        
-        .subtagline {
-          font-size: 18px;
-          color: var(--text-muted);
-          font-weight: 400;
-          margin-bottom: 40px;
-          max-width: 600px;
-          /* Smoothly trailing behind the headline by 0.6s */
-          animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
+            fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+            textShimmer 4s linear infinite;
         }
 
         /* --- Main Container --- */
@@ -138,12 +128,9 @@
 
         /* --- Hero Section --- */
         .hero {
-          margin-top: 20px; /* 將 130px 改做 20px */
-          margin-bottom: 50px;
-          padding: 0 20px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+            margin-top: 20px; /* 將 130px 改做 20px */
+            margin-bottom: 50px;
+            padding: 0 20px;
         }
 
         /* Animation: Continuous Elegant Slow Fade-in Up (14s loop) */
@@ -155,10 +142,36 @@
           100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
         }
 
-           /* 🚀 3. 定義動畫：由左至右移動背景位置 */
-           @keyframes neonFlow {
-           0% { background-position: 0% 50%; }
-           100% { background-position: 400% 50%; }
+        /* Animation: Aurora Shimmer shifting within text (4s loop) */
+        @keyframes textShimmer {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+
+        h1.tagline {
+            font-size: 32px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00ffcc 0%, #a370ff 35%, #ff007f 70%, #00ffcc 100%);
+            background-size: 400% 100%;
+            animation: neonFlow 12s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* 👈 補番呢行，字體就會即刻變透明兼識得郁！ */
+        }
+
+        .subtagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* --- NFT 卡片 RWD 布局 --- */
