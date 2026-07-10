@@ -134,15 +134,22 @@
         }
 
         h1.tagline {
-            font-size: 32px;
-            margin: 0 0 10px 0;
-            font-weight: 700;
-            /* 🎨 流動霓虹光管漸變色 */
-            background: linear-gradient(135deg, #00ffcc 0%, #a370ff 35%, #ff007f 70%, #00ffcc 100%);
-            background-size: 400% 100%;
-            animation: neonFlow 10s linear infinite;
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
+      
+        /* Liquid multi-tone aurora gradient mapped to enlarged background canvas */
+            background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+            background-size: 200% auto;
+      
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+      
+        /* Dual animation stacking */
+            animation: 
+              fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+              textShimmer 4s linear infinite;
         }
 
         @keyframes neonFlow {
