@@ -133,17 +133,6 @@
             padding: 0 20px;
         }
 
-        h1.tagline {
-            font-size: 32px;
-            margin: 0 0 10px 0;
-            font-weight: 700;
-            background: linear-gradient(135deg, #00ffcc 0%, #a370ff 35%, #ff007f 70%, #00ffcc 100%);
-            background-size: 400% 100%;
-            animation: neonFlow 12s linear infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; /* 👈 補番呢行，字體就會即刻變透明兼識得郁！ */
-        }
-
         /* Animation: Continuous Elegant Slow Fade-in Up (14s loop) */
         @keyframes fadeInUpLoopSlow {
           0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
@@ -157,6 +146,17 @@
         @keyframes neonFlow {
           0% { background-position: 0% 50%; }
           100% { background-position: 400% 50%; }
+        }
+
+        h1.tagline {
+            font-size: 32px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00ffcc 0%, #a370ff 35%, #ff007f 70%, #00ffcc 100%);
+            background-size: 400% 100%;
+            animation: neonFlow 12s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* 👈 補番呢行，字體就會即刻變透明兼識得郁！ */
         }
 
         .subtagline {
