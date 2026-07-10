@@ -117,9 +117,13 @@
         }
 
         .subtagline {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin: 0;
+          font-size: 18px;
+          color: var(--text-muted);
+          font-weight: 400;
+          margin-bottom: 40px;
+          max-width: 600px;
+          /* Smoothly trailing behind the headline by 0.6s */
+          animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
 
         /* --- Main Container --- */
