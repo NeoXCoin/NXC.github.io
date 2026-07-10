@@ -199,8 +199,13 @@
 
         .nft-content-row {
             display: flex;
-            flex-direction: column;
-            gap: 24px;
+            flex-direction: row; 
+            align-items: center;    /* 垂直置中 */
+            justify-content: center; /* 水平置中 (這是關鍵) */
+            gap: 40px;              /* 增加一點間距讓排版更舒適 */
+            max-width: 800px;       /* 限制寬度讓它集中在中間 */
+            margin: 0 auto;         /* 強制區塊本身置中 */
+            padding: 20px;           /* 增加一點邊距，測試視覺效果 */
         }
 
         @media (min-width: 640px) {
