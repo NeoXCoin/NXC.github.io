@@ -269,7 +269,7 @@
         <span class="lang-sep">|</span>
         <a href="about-global.html">Global</a>
       </div>
-      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+      
     </div>
   </header>
 
@@ -327,41 +327,7 @@
   </footer>
 
   <script>
-    const connectBtn = document.getElementById('connect-btn');
-
-    async function checkConnection() {
-      if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) {
-          updateButton(accounts[0]);
-        }
-      }
-    }
-
-    function updateButton(address) {
-      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-      connectBtn.innerText = shortAddress;
-      connectBtn.style.color = "#00ffcc";
-      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-    }
-
-    connectBtn.addEventListener('click', async () => {
-      if (typeof window.ethereum !== 'undefined') {
-        try {
-          connectBtn.innerText = "連接中...";
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          updateButton(accounts[0]);
-        } catch (error) {
-          console.error("錢包連接錯誤:", error);
-          connectBtn.innerText = "Connect Wallet";
-        }
-      } else {
-        alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
-        window.open('https://metamask.io/download/', '_blank');
-      }
-    });
-
-    window.addEventListener('DOMContentLoaded', checkConnection);
+   window.addEventListener('DOMContentLoaded', checkConnection);
   </script>
 
 </body>
