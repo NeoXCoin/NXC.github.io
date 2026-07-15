@@ -269,67 +269,72 @@
 
         // 1. 連接錢包功能
         const connectBtn = document.getElementById('connect-btn');
+        let currentAccount = null;
+
+        // 統一更新介面的函數
+        function updateUI(address) {
+          if (address) {
+            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+            connectBtn.innerText = shortAddress;
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+            localStorage.setItem('isWalletConnected', 'true'); // 記住已連線
+          } else {
+            connectBtn.innerText = "Connect Wallet";
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.3)";
+            localStorage.removeItem('isWalletConnected'); // 清除狀態
+          }
+        }
+
+        // 初始化檢查（跨頁面同步的核心）
+        async function initWallet() {
+          if (typeof window.ethereum !== 'undefined') {
+            // 如果之前有連線過，自動嘗試讀取帳號
+            if (localStorage.getItem('isWalletConnected') === 'true') {
+              const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+              if (accounts.length > 0) {
+                currentAccount = accounts[0];
+                updateUI(currentAccount);
+              }
+            }
+
+            // 監聽 MetaMask 帳號切換
+            window.ethereum.on('accountsChanged', (accounts) => {
+              if (accounts.length === 0) {
+                currentAccount = null;
+                updateUI(null);
+              } else {
+                currentAccount = accounts[0];
+                updateUI(currentAccount);
+              }
+             });
+          }
+        }
+
+        // 點擊按鈕邏輯
         connectBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    if (accounts.length > 0) {
-                        connectBtn.innerText = accounts[0].substring(0, 6) + "..." + accounts[0].substring(accounts[0].length - 4);
-                    }
-                } catch (error) {
-                    console.error("User denied account access", error);
-                }
+          if (typeof window.ethereum !== 'undefined') {
+            if (currentAccount) {
+              // 如果已經連線，點擊改為斷開
+              currentAccount = null;
+              updateUI(null);
             } else {
-                alert('請先安裝 MetaMask 或其他 Web3 錢包！');
-            }
-        });
-
-        // 2. 自動新增代幣到錢包功能
-        const addTokenBtn = document.getElementById('add-token-btn');
-        addTokenBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    const wasAdded = await window.ethereum.request({
-                        method: 'wallet_watchAsset',
-                        params: {
-                            type: 'ERC20',
-                            options: {
-                                address: tokenAddress,
-                                symbol: tokenSymbol,
-                                decimals: tokenDecimals,
-                                image: tokenImage,
-                            },
-                        },
-                    });
-
-                    if (wasAdded) {
-                        alert('成功將 NXC 代幣新增至您的錢包！');
-                    } else {
-                        console.log('使用者拒絕新增代幣。');
-                    }
+              // 請求連接
+              try {
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                currentAccount = accounts[0];
+                updateUI(currentAccount);
                 } catch (error) {
-                    console.error(error);
-                    alert('新增代幣失敗，請確保錢包已切換至正確的網路 (Base)。');
-                }
-            } else {
-                alert('未偵測到 Web3 錢包，請在 MetaMask 瀏覽器中開啟或安裝擴充功能。');
+                console.error("Connection rejected", error);
+               }
             }
+          } else {
+            alert("請安裝 MetaMask 錢包");
+          }
         });
 
-        // 3. 複製合約地址功能
-        const copyBtn = document.getElementById('copy-btn');
-        copyBtn.addEventListener('click', () => {
-            const addrText = document.getElementById('addr').innerText;
-            navigator.clipboard.writeText(addrText).then(() => {
-                const originalText = copyBtn.innerText;
-                copyBtn.innerText = '已複製！';
-                setTimeout(() => {
-                    copyBtn.innerText = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('複製失敗: ', err);
-            });
-        });
-    </script>
+        window.addEventListener('DOMContentLoaded', initWallet);
+      </script>
 </body>
 </html>
