@@ -356,7 +356,7 @@
                 <span class="lang-sep">|</span>
                 <a href="whitepaper-zh.html">繁</a>
             </div>
-            <button class="btn-connect" id="connect-btn">連結錢包</button>
+            
         </div>
     </header>
 
@@ -491,58 +491,6 @@
 
     <!-- 錢包連線機制核心腳本 -->
     <script>
-        const connectBtn = document.getElementById('connect-btn');
-        let currentAccount = null;
-
-        async function checkConnection() {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                    if (accounts.length > 0) {
-                        currentAccount = accounts[0];
-                        updateButton(currentAccount);
-                    }
-                } catch (error) {
-                    console.error("檢查連線出錯:", error);
-                }
-            }
-        }
-
-        function updateButton(address) {
-            if (address) {
-                const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-                connectBtn.innerText = shortAddress;
-                connectBtn.style.color = "#00ffcc";
-                connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-            } else {
-                connectBtn.innerText = "連結錢包";
-                connectBtn.style.color = "#00ffcc";
-                connectBtn.style.borderColor = "rgba(0, 255, 204, 0.3)";
-            }
-        }
-
-        connectBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                if (currentAccount) {
-                    currentAccount = null;
-                    updateButton(null);
-                    return;
-                }
-                try {
-                    connectBtn.innerText = "連線中...";
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    currentAccount = accounts[0];
-                    updateButton(currentAccount);
-                } catch (error) {
-                    console.error("用戶取消了登入流程", error);
-                    updateButton(null);
-                }
-            } else {
-                alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
-                window.open('https://metamask.io/download/', '_blank');
-            }
-        });
-
         window.addEventListener('DOMContentLoaded', checkConnection);
     </script>
 </body>
