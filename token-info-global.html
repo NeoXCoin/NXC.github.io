@@ -445,40 +445,72 @@
 
   <script>
     const connectBtn = document.getElementById('connect-btn');
+    let currentAccount = null;
 
-    async function checkConnection() {
-      if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) {
-          updateButton(accounts[0]);
-        }
+    // 統一更新介面的函數
+    function updateUI(address) {
+      if (address) {
+        const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+        connectBtn.innerText = shortAddress;
+        connectBtn.style.color = "#00ffcc";
+        connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+        localStorage.setItem('isWalletConnected', 'true'); // 記住已連線
+      } else {
+        connectBtn.innerText = "Connect Wallet";
+        connectBtn.style.color = "#00ffcc";
+        connectBtn.style.borderColor = "rgba(0, 255, 204, 0.3)";
+        localStorage.removeItem('isWalletConnected'); // 清除狀態
       }
     }
 
-    function updateButton(address) {
-      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-      connectBtn.innerText = shortAddress;
-      connectBtn.style.color = "#00ffcc";
-      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    // 初始化檢查（跨頁面同步的核心）
+    async function initWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        // 如果之前有連線過，自動嘗試讀取帳號
+        if (localStorage.getItem('isWalletConnected') === 'true') {
+          const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+          if (accounts.length > 0) {
+            currentAccount = accounts[0];
+            updateUI(currentAccount);
+          }
+        }
+
+        // 監聽 MetaMask 帳號切換
+        window.ethereum.on('accountsChanged', (accounts) => {
+          if (accounts.length === 0) {
+            currentAccount = null;
+            updateUI(null);
+          } else {
+            currentAccount = accounts[0];
+            updateUI(currentAccount);
+          }
+        });
+      }
     }
 
+    // 點擊按鈕邏輯
     connectBtn.addEventListener('click', async () => {
       if (typeof window.ethereum !== 'undefined') {
-        try {
-          connectBtn.innerText = "Connecting...";
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          updateButton(accounts[0]);
-        } catch (error) {
-          console.error("Wallet login error:", error);
-          connectBtn.innerText = "Connect Wallet";
+        if (currentAccount) {
+          // 如果已經連線，點擊改為斷開
+          currentAccount = null;
+          updateUI(null);
+        } else {
+          // 請求連接
+          try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            currentAccount = accounts[0];
+            updateUI(currentAccount);
+          } catch (error) {
+            console.error("Connection rejected", error);
+          }
         }
       } else {
-        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
-        window.open('https://metamask.io/download/', '_blank');
+        alert("請安裝 MetaMask 錢包");
       }
     });
 
-    window.addEventListener('DOMContentLoaded', checkConnection);
+    window.addEventListener('DOMContentLoaded', initWallet);
   </script>
 
 </body>
