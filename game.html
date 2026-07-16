@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
     <!-- Favicon (ICO + SVG + Apple Icon) -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -38,6 +38,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://neoxcoin.io/game.html" />
     
     <style>
         /* 100% 同步 index.html 嘅設計變數與風格 */
@@ -194,23 +195,23 @@
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "VideoObject",
-        "name": "NeoX Catch the Coins – Global Play-to-Earn Game",
-        "description": "Join the NeoX Catch the Coins Game – an interactive play-to-earn Web3 experience. Collect NeoX Coins, unlock hidden levels, and rise on the global leaderboard!",
-        "thumbnailUrl": "https://neoxcoin.io/NeoXGamePage.png",
-        "uploadDate": "2025-11-08T00:00:00-05:00",
-        "duration": "PT0M30S",
-        "contentUrl": "https://neoxcoin.io/NeoXcatchcoinAnimation.MP4",
-        "embedUrl": "https://neoxcoin.io/game.html",
-        "publisher": {
-            "@type": "Organization",
-            "name": "NeoX",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://neoxcoin.io/XNXC.png"
-            }
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Game",
+          "name": "NeoX Catch the Coins",
+          "description": "Interactive Web3 arcade experience on Base.",
+          "publisher": { "@type": "Organization", "name": "NeoX" }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "NeoX Game Trailer",
+          "thumbnailUrl": "https://neoxcoin.io/NeoXGamePage.png",
+          "contentUrl": "https://neoxcoin.io/NeoXcatchcoinAnimation.MP4",
+          "duration": "PT0M30S",
+          "uploadDate": "2025-11-08T00:00:00-05:00"
         }
+      ]
     }
     </script>
 </head>
