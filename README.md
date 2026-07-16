@@ -62,7 +62,7 @@ to open it directly in your browser (recommended: **Chrome** or **Safari**).
 
 ## 📜 Disclaimer
 
-Before using this website, please review [`disclaimer.html`](https://neoxcoin.io/disclaimer.html).  
+Before using this website, please review [`disclaimer.html`](https://neoxcoin.io/disclaimer-en.html).  
 Cryptocurrency investments carry significant risks — always **Do Your Own Research (DYOR)**.
 
 ---
