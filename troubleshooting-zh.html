@@ -281,6 +281,31 @@
       .nav-links { display: none; }
       .page-title { font-size: 34px; }
       .trouble-card { padding: 25px; }
+
+    /* ===== 核心修正：強制手機版顯示三個按鈕並縮小間距 ===== */
+    .btn-row {
+        gap: 32px !important; /* 手機版將間距縮小到 32px，確保三個按鈕不會擠出螢幕 */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-top: 40px !important;
+    }
+
+    /* 確保屋仔 (Home) 同 箭嘴 在手機上絕對可見，且不會被壓扁 */
+    .btn-neo-home, 
+    /* 確保箭嘴與 Home 鈕尺寸完全一致，在手機上才不會錯位 */
+    .btn-neo-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 10px !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
     }
   </style>
 </head>
