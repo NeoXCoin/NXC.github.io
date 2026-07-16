@@ -180,27 +180,54 @@
     .highlight-link { color: var(--primary); text-decoration: underline; }
     .highlight-link:hover { color: var(--secondary); }
 
-    /* 全站統一的極簡毛玻璃按鈕 */
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
+    /* --- Home Button 升級版：圓滑 3D滑溜肥皂質感 --- */
+    .btn-neo-home,
+    .btn-neo-arrow {
+        width: 64px !important;    /* 稍微加大尺寸，讓它更有分量 */
+        height: 64px !important;   /* 稍微加大尺寸 */
+    
+        /* ===== 核心修正：將 10px 大幅增加，實現像圖中那樣的極致圓滑 ===== */
+        border-radius: 20px !important; /* 你可以根據喜好調校到 22px，越圓滑就越像肥皂 */
+    
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    
+        /* 玻璃擬態背景 */
+        background: rgba(255, 255, 255, 0.03);
+    
+        /* 核心 3D 質感：加上細緻的內陰影，模擬肥皂般的圓滑厚度 */
+        box-shadow: 
+            inset 0 2px 4px rgba(255, 255, 255, 0.05), /* 頂部高光 */
+            inset 0 -2px 4px rgba(0, 0, 0, 0.2),       /* 底部陰影 */
+            0 4px 10px rgba(0, 0, 0, 0.1);             /* 整體浮起陰影 */
+    
+        /* 幼細的半透明邊框 */
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(10px);
     }
-    .btn-back {
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: all 0.2s ease;
+
+    /* Hover 時，Logo 本身變成定義好的漸變色 */
+      .btn-neo-home:hover svg path.home-path {
+       stroke: url(#homeGradient); /* 使用 HTML SVG 中定義的漸變定義 ID */
     }
-    .btn-back:hover {
-      background: var(--glass);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+
+    /* Hover 效果：青色到紫色的霓虹漸變框與發光 */
+    .btn-neo-home:hover {
+        /* 1. 利用背景漸變和 padding 模擬漸變邊框 */
+        background: padding-box rgba(255, 255, 255, 0.05),
+                    border-box linear-gradient(135deg, #00ffcc, #a370ff);
+    
+        /* 2. 強行把原本邊框變透明，讓外層漸變透出來 */
+        border-color: transparent;
+    
+        /* 3. 雙色霓虹發光效果 */
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.4),
+                    0 0 30px rgba(163, 112, 255, 0.4);
+    
+        /* 4. 向上微動 */
+        transform: translateY(-3px) scale(1.05);
     }
 
     /* --- Footer --- */
